@@ -16,7 +16,7 @@
 * Jeffrey
 * Jim
 
-## Supervisor: Cunsheng DING:
+## Supervisor --- Cunsheng DING :
 * Email:   cding@cse.ust.hk
 * Room:    2533
 * Phone:   7021
