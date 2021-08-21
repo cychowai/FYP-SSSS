@@ -10,19 +10,16 @@
     The objective of this FYP is to have an online implementation of Shamir's secret sharing scheme 
     similar to the one in the URL:    http://point-at-infinity.org/ssss/demo.html
 
-
 ## Group member :
 * Ben
 * Crystal
 * Jeffrey
 * Jim
 
-
 ## Supervisor --- Cunsheng DING :
 * Email:   cding@cse.ust.hk
 * Room:    2533
 * Phone:   7021
-
 
 ## Proposal draft :
 [Proposal](https://docs.google.com/document/d/1ssRn5Mdr7cZdHyzd_QNMyg-0iYVcA5LMTyV-qPE8NLQ/edit?pli=1)
