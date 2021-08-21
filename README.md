@@ -17,9 +17,9 @@
 * Jim
 
 ## Supervisor: Cunsheng DING:
-* Email: cding@cse.ust.hk
-* Room: 2533
-* Phone: 7021
+* Email:   cding@cse.ust.hk
+* Room:    2533
+* Phone:   7021
 
 
 ## Proposal draft :
