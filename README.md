@@ -3,12 +3,12 @@
 
 ## Project Description:
     
-    Secret sharing refers to method for distributing a secret amongst a group of participants, each of whom is allocated 
-    a share of the secret. The secret can be reconstructed only when a sufficient number of shares are combined together; 
-    individual shares are of no use on their own.
+    Secret sharing refers to method for distributing a secret amongst a group of participants, each of whom
+    is allocated a share of the secret. The secret can be reconstructed only when a sufficient number of 
+    shares are combined together; individual shares are of no use on their own.
 
-    The objective of this FYP is to have an online implementation of Shamir's secret sharing scheme similar to the one in 
-    the URL:    http://point-at-infinity.org/ssss/demo.html
+    The objective of this FYP is to have an online implementation of Shamir's secret sharing scheme similar 
+    to the one in the URL:    http://point-at-infinity.org/ssss/demo.html
 
 ## Group member :
 * Ben
