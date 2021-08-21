@@ -8,13 +8,15 @@
     number of shares are combined together; individual shares are of no use on their own.
 
     The objective of this FYP is to have an online implementation of Shamir's secret sharing scheme 
-    similar to the one in the URL:    [demo](http://point-at-infinity.org/ssss/demo.html)
+    similar to the one in the URL:    http://point-at-infinity.org/ssss/demo.html
+
 
 ## Group member :
 * Ben
 * Crystal
 * Jeffrey
 * Jim
+
 
 ## Supervisor --- Cunsheng DING :
 * Email:   cding@cse.ust.hk
