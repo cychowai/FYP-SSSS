@@ -23,3 +23,6 @@
 
 ## Proposal draft :
 [Proposal](https://docs.google.com/document/d/1ssRn5Mdr7cZdHyzd_QNMyg-0iYVcA5LMTyV-qPE8NLQ/edit?pli=1)
+
+## Timetable :
+[Timetable](https://docs.google.com/spreadsheets/d/11pOPNSRHNINYs_rqqZAd8j82ksVMqns7LQiraN28XBY/edit#gid=0)
