@@ -26,6 +26,11 @@
 
 ## Learning for localhost for a virtual server :
 [link](https://ronallo.com/iiif-workshop-new/preparation/web-server.html)
+After going to the path of the project folder, build it on virtual server by running
+
+```
+python compile.py
+```
 
 ## Interim report :
 [Proposal](https://docs.google.com/document/d/1FH2lPfhv7l5zpBSC1p0CXG_1g6ul862hSerCk4UFglY/edit)
