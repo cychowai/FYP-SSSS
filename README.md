@@ -1,7 +1,7 @@
 # FYP-SSSS
 > Final Year Project --- Shamir's secret sharing scheme (CD1)
 
-## Project Description:
+## Project Description :
     
     Secret sharing refers to method for distributing a secret amongst a group of participants, each 
     of whom is allocated a share of the secret. The secret can be reconstructed only when a 
@@ -25,4 +25,14 @@
 [Proposal](https://docs.google.com/document/d/1ssRn5Mdr7cZdHyzd_QNMyg-0iYVcA5LMTyV-qPE8NLQ/edit?pli=1)
 
 ## Learning for localhost for a virtual server :
+* RUNNING python3 -m http.server in the folder directory
 [link](https://ronallo.com/iiif-workshop-new/preparation/web-server.html)
+
+## Or after going to the path of the project folder, build it on virtual server by running :
+
+```
+python compile.py
+```
+
+## Interim report :
+[Proposal](https://docs.google.com/document/d/1FH2lPfhv7l5zpBSC1p0CXG_1g6ul862hSerCk4UFglY/edit)
