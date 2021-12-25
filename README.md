@@ -25,6 +25,7 @@
 [Proposal](https://docs.google.com/document/d/1ssRn5Mdr7cZdHyzd_QNMyg-0iYVcA5LMTyV-qPE8NLQ/edit?pli=1)
 
 ## Learning for localhost for a virtual server :
+* RUNNING python3 -m http.server in the folder directory
 [link](https://ronallo.com/iiif-workshop-new/preparation/web-server.html)
 
 ## Or after going to the path of the project folder, build it on virtual server by running :
