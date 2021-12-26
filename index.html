@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>FYP-SSSS</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Jim Chow">
-<meta name="description" content="Final Year Project --- Shamir's secret sharing scheme (CD1)">
-<link rel="stylesheet" href="style.css">
+    <title>Final Year Project - Shamir Secret Sharing Scheme</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jim Chow">
+    <meta name="description" content="Final Year Project --- Shamir's secret sharing scheme (CD1)">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-
-<h1>FYP-SSSS</h1>
-<p>to do</p>
-<p>testing</p>
-
+    <div class="container">
+        <h1>Shamir Secret Sharing Scheme</h1>
+        <div class="centerContainer">
+            <div class="leftDiv">
+                <h2>Split / Encryption:</h2>
+                <h3>Require 3 parts from 5 to reconstruct the following secret:</h3>
+                <textarea form="secret" name="secretInput" cols="60" rows="10" wrap="soft"></textarea>
+                <form method="get" id="secret">
+                    <input type="submit" value="Split"></input>
+                </form>
+                <h3>Share(s):</h3>
+                <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
+            </div>
+            <div class="rightDiv">
+                <h2>Combine / Decryption:</h2>
+                <h3>Put the shares here to combile for reconstruct the secret:</h3>
+                <textarea form="sharesRecombine" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
+                <form method="get" id="sharesRecombine">
+                    <input type="submit" value="Combine"></input>
+                </form>
+                <h3>You can view your secret below, or download if it is a file:</h3>
+                <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
+            </div>
+        </div>
+        <div></div>
+    </div>
 </body>
+
 </html>
