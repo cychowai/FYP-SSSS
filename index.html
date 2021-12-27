@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Final Year Project - Shamir Secret Sharing Scheme</title>
     <meta charset="UTF-8">
+    <title>Final Year Project - Shamir Secret Sharing Scheme</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jim Chow">
     <meta name="description" content="Final Year Project --- Shamir's secret sharing scheme (CD1)">
+    <link rel="icon" type="image/x-icon" href="src/image/icon.png">
+    <!-- import css here -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -16,27 +18,38 @@
         <div class="centerContainer">
             <div class="leftDiv">
                 <h2>Split / Encryption:</h2>
-                <h3>Require 3 parts from 5 to reconstruct the following secret:</h3>
-                <textarea form="secret" name="secretInput" cols="60" rows="10" wrap="soft"></textarea>
-                <form method="get" id="secret">
-                    <input type="submit" value="Split"></input>
-                </form>
+                <h3>Require
+                    <input type="number" class="threshold" name="threshold" size="3px" value="3" min="2"
+                        max="255"></input>
+                    parts from
+                    <input type="number" class="noOfShares" name="noOfShares" size="3px" value="5" min="2"
+                        max="255"></input>
+                    to reconstruct the following secret:
+                </h3>
+                <textarea form="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                    placeholder="Please type the secret here ..."></textarea>
+                <br>
+                <button onclick="splitSecret();">Split</button>
                 <h3>Share(s):</h3>
-                <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
+                <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft" value=""></textarea>
             </div>
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
-                <textarea form="sharesRecombine" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
-                <form method="get" id="sharesRecombine">
-                    <input type="submit" value="Combine"></input>
-                </form>
+                <textarea form="sharesRecombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
+                    placeholder="Please put the shares one by one per line ..."></textarea>
+                <br>
+                <button onclick="combineShares();">Combine</button>
                 <h3>You can view your secret below, or download if it is a file:</h3>
                 <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
             </div>
         </div>
         <div></div>
     </div>
+    <!-- import javaScript here -->
+    <script src="js/app.js"></script>
+    <script src="js/selector.js"></script>
+    <script src="js/function.js"></script>
 </body>
 
 </html>
