@@ -26,7 +26,7 @@
                         max="255"></input>
                     to reconstruct the following secret:
                 </h3>
-                <textarea form="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                <textarea form="secret" class="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."></textarea>
                 <br>
                 <button onclick="splitSecret();">Split</button>
@@ -36,7 +36,7 @@
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
-                <textarea form="sharesRecombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
+                <textarea form="sharesRecombine" class="shares" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
                 <br>
                 <button onclick="combineShares();">Combine</button>

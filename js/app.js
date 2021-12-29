@@ -1,15 +1,12 @@
 (function () {
-    var DOM = {};
-    // DOM.threshold = $(".threshold");
-    DOM.noOfShares = $(".noOfShares");
-    var noOfShares = DOM.noOfShares.value;
+    var threshold = document.getElementsByClassName("threshold")[0].value;
+    var noOfShares = document.getElementsByClassName("noOfShares")[0].value;
+    var secret = document.getElementsByClassName("secret")[0].value;
+    var shares = document.getElementsByClassName("shares")[0].value;
+
+    console.log("threshold : ", threshold);
     console.log("noOfShares : ", noOfShares);
-    // var noOfShares = document.getElementById("noOfShares");
-    // var threshold = document.getElementById("threshold")
-    // var secret = document.getElementById("secret");
-    // 
-    // console.log("threshold : ", threshold);
-    // console.log("secret : ", secret);
-    // var noOfShares = document.getElementById("noOfShares").value;
-    // var noOfShares = document.getElementById("noOfShares").value;
+    console.log("secret : ", secret);
+    console.log("shares : ", shares);
+
 })();
