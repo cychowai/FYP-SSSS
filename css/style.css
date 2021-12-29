@@ -9,6 +9,7 @@ div.container {
 
 div.centerContainer {
     display: flex;
+    margin-left: 30px;
 }
 
 div.leftDiv {
