@@ -19,9 +19,11 @@
             <div class="leftDiv">
                 <h2>Split / Encryption:</h2>
                 <h3>Require
-                    <input type="number" class="threshold" name="threshold" size="3px" value="3" onchange="updateThreshold()"></input>
+                    <input type="number" id="threshold" class="threshold" name="threshold" 
+                        size="3px" value="3" min="2" max="99" onchange="updateThreshold()"></input>
                     parts from
-                    <input type="number" class="noOfShares" name="noOfShares" size="3px" value="5" onchange="updateShares()"></input>
+                    <input type="number" id="noOfShares" class="noOfShares" name="noOfShares" 
+                        size="3px" value="5" min="2" max="99" onchange="updateShares()"></input>
                     to reconstruct the following secret:
                 </h3>
                 <textarea form="secret" class="secret" name="secretInput" cols="60" rows="10" wrap="soft"
