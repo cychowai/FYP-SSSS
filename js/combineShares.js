@@ -4,7 +4,11 @@ combineShares = function () {
     console.log("threshold : ", threshold);
     var shares = document.getElementsByClassName("shares")[0].value;
     console.log("shares : ", shares);
+    
     //todo
-    //combine shares into secret with no of shares >= threshold 
+    //combine shares into secret with no of shares >= threshold
+    
+    
+
     document.getElementById("showSecret").value = "secret here //todo";
 }
