@@ -5,6 +5,15 @@ splitSecret = function () {
     var secret = document.getElementsByClassName("secret")[0].value;
     console.log("secret : ", secret);
 
+    //checking whether the secret exists
+    if (!secret) {
+        alert("Please enter the secret!");
+        return;
+    }
+
+    //shares that return
+    var shares = [];
+
     //todo
     //split the secret into shares with no = noOfShares
     var irredCoeff = [
@@ -22,5 +31,5 @@ splitSecret = function () {
         9, 7, 12, 9, 3, 9, 5, 2, 17, 10, 6, 24, 9, 3, 17, 15, 13, 5, 4, 3, 19, 17, 8, 15, 6, 3, 19, 6, 1 ]
 
     
-    document.getElementById("shares").value = "shares here //todo";
+    document.getElementById("shares").value = shares;
 }
