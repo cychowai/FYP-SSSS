@@ -13,16 +13,21 @@ splitSecret = function () {
         return;
     }
 
-    //shares that return
-    var secretHex = strToHex(secret);
-    var shares = share(secretHex, noOfShares, threshold, 1024);
-
     //todo
     //split the secret into shares with no = noOfShares
-
-    //for (var i = 0; i < noOfShares; i++) {
-        //shares.push(generateShares());
-    //}
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, 1024);
+    console.log("shares : ", shares);
+    /*
+    var sharesString;
+    for (var i = 0; i < noOfShares; i++) {
+        var share = shares[i];
+        var li = document.createElement("li");
+        li.classList.add("part");
+        li.textContent = share;
+        sharesString.append(li);
+        //sharesString.push(share);
+    }
+    */
 
     document.getElementById("shares").value = shares;
 }

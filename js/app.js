@@ -6,16 +6,8 @@ const defaultShares = 5;
 function updateThreshold() {
     //read the number of shares and threshold from the HTML
     var threshold = document.getElementById("threshold").value;
-    //var noOfShares = document.getElementById("noOfShares").value;
 
     //check the number of threshold and update the number of threshold
-    /*
-    if (threshold > noOfShares) {
-        document.getElementById("threshold").value = defaultThreshold;
-        alert("Threshold should not be greater than number of shares");
-    }
-    else 
-    */
     if (threshold < MIN_VALUE) {
         document.getElementById("threshold").value = MIN_VALUE;
         alert("Number of required shares should be at least " + MIN_VALUE + 
@@ -32,22 +24,13 @@ function updateThreshold() {
 
     //logging
     console.log("threshold : ", threshold);
-    //console.log("noOfShares : ", noOfShares);
 }
 
 function updateShares() {
     //read the number of shares and threshold from the HTML
-    //var threshold = document.getElementById("threshold").value;
     var noOfShares = document.getElementById("noOfShares").value;
 
     //check the number of shares and update the number of shares
-     /*
-    if (threshold > noOfShares) {
-        document.getElementById("noOfShares").value = defaultShares;
-        alert("Threshold should not be greater than number of shares");
-    }
-    else 
-    */
     if (noOfShares < MIN_VALUE) {
         document.getElementById("noOfShares").value = MIN_VALUE;
         alert("Number of shares should be at least 2, please enter the number of shares greater than 2");
@@ -62,7 +45,6 @@ function updateShares() {
     }
 
     //logging
-    //console.log("threshold : ", threshold);
     console.log("noOfShares : ", noOfShares);
 }
 
