@@ -16,18 +16,13 @@ splitSecret = function () {
     //todo
     //split the secret into shares with no = noOfShares
     var shares = generateShares(strToHex(secret), noOfShares, threshold, 1024);
-    console.log("shares : ", shares);
-    /*
-    var sharesString;
-    for (var i = 0; i < noOfShares; i++) {
-        var share = shares[i];
-        var li = document.createElement("li");
-        li.classList.add("part");
-        li.textContent = share;
-        sharesString.append(li);
-        //sharesString.push(share);
+    
+    var sharesString = [];
+    for (var i = 0; i < shares.length; i++) {
+        var share = shares[i] + "\r\n\r\n";
+        console.log("shares", i, " : ", share);
+        sharesString.push(share);
     }
-    */
 
-    document.getElementById("shares").value = shares;
+    document.getElementById("shares").value = sharesString.join("");
 }
