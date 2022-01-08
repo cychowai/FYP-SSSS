@@ -1,3 +1,8 @@
+const MAX_VALUE = 255;
+const MIN_VALUE = 2;
+const defaultThreshold = 3;
+const defaultShares = 5;
+
 const defaultBits = 8;
 const defaultMaxBits = 20;
 const defaultMinBits = 3;
@@ -7,6 +12,9 @@ const maxBytesPerChar = 6;
 const preGenPadding = new Array(1024).join("0");
 const defaultSize = Math.pow(2, defaultBits);
 const maxShares = defaultSize - 1;
+const minPadLength = 128;
+const maxPadLength = 1024; 
+
 const primitivePolynomials = [null, null, 1, 3, 3, 5, 3, 3, 29, 17, 9, 5, 83, 27, 43, 3, 45, 9, 39, 39, 9, 5, 3, 33, 27, 9, 71, 39, 9, 5, 83];
 const primitive = primitivePolynomials[defaultBits];
 var logs = [], exps = [], i, x = 1;

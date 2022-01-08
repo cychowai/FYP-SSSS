@@ -15,7 +15,8 @@ splitSecret = function () {
 
     //todo
     //split the secret into shares with no = noOfShares
-    var shares = generateShares(strToHex(secret), noOfShares, threshold, 1024);
+    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {

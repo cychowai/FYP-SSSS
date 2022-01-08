@@ -85,10 +85,7 @@ function constructPublicShareString(bits, id, data) {
 }
 
 function construct(bits, arr, radix, size) {
-    var i = 0,
-        len,
-        str = "",
-        parsedInt;
+    var i = 0, len, str = "", parsedInt;
 
     if (arr) {
         len = arr.length - 1;
@@ -108,16 +105,67 @@ function construct(bits, arr, radix, size) {
 }
 
 function browserCryptoGetRandomValues(bits) {
-    var elems,
-        radix,
-        size,
-        str = null;
-        radix = 10;
-        size = 32;
-        elems = Math.ceil(bits / 32);
+    var str = null; 
+    var radix = 10; 
+    var size = 32; 
+    var elems = Math.ceil(bits / 32);
 
     while (str === null) {
         str = construct(bits, window.crypto.getRandomValues(new Uint32Array(elems)), radix, size);
     }
     return str;
+}
+
+function lagrange(at, x, y) {
+    var sum = 0, len, product;
+
+    for (var i = 0, len = x.length; i < len; i++) {
+        if (y[i]) {
+            product = defaultLogs[y[i]];
+            for (var j = 0; j < len; j++) {
+                if (i !== j) {
+                    if (at === x[j]) { // happens when computing a share that is in the list of shares used to compute it
+                        product = -1; // fix for a zero product term, after which the sum should be sum^0 = sum, not sum^1
+                        break;
+                    }
+                    product = (product + defaultLogs[at ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares; // to make sure it's not negative
+                }
+            }
+            // though exps[-1] === undefined and undefined ^ anything = anything in
+            // chrome, this behavior may not hold everywhere, so do the check
+            sum = product === -1 ? sum : sum ^ defaultExps[product];
+        }
+    }
+    return sum;
+}
+
+function extractShareComponents(share) {
+    var bits, max, regexStr, shareComponents;
+    var obj = {};
+    var id, idLen;
+
+    // Extract the first char which represents the bits in Base 36
+    bits = parseInt(share.substr(0, 1), 36); 
+    max = Math.pow(2, bits) - 1;
+
+    // Determine the ID length which is variable and based on the bit count.
+    idLen = (Math.pow(2, bits) - 1).toString(defaultBase).length;
+
+    // Extract all the parts now that the segment sizes are known.
+    regexStr = "^([a-kA-K3-9]{1})([a-fA-F0-9]{" + idLen + "})([a-fA-F0-9]+)$";
+    shareComponents = new RegExp(regexStr).exec(share);
+
+    // The ID is a Hex number and needs to be converted to an Integer
+    if (shareComponents) {
+        id = parseInt(shareComponents[2], defaultBase);
+    }
+
+    if (shareComponents && shareComponents[3]) {
+        obj.bits = bits;
+        obj.id = id;
+        obj.data = shareComponents[3];
+        return obj;
+    }
+
+    alert("The share data provided is invalid : " + share);    
 }

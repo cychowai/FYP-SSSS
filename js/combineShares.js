@@ -3,10 +3,10 @@ combineShares = function () {
     var threshold = document.getElementsByClassName("threshold")[0].value;
     console.log("threshold : ", threshold);
     var sharesString = document.getElementsByClassName("shares")[0].value;
-    console.log("shares : ", shares);
+    console.log("shares from the input : ", sharesString);
 
     //checking whether the shares exist
-    if (!shares) {
+    if (!sharesString) {
         alert("Please enter the shares!");
         return;
     }
@@ -14,14 +14,9 @@ combineShares = function () {
     //todo
     //combine shares into secret with no of shares >= threshold
     var shares = sharesString.trim().split(/\s+/);
-
-    try {
-        var secret = hexToStr(regenerateSecret(shares));
-    }
-    catch (error) {
-        alert(error.message);
-    }
-    
+    console.log("shares : ", shares);
+    var secret = hexToStr(regenerateSecret(shares));
+    console.log("secret : ", secret);
     document.getElementById("showSecret").value = secret;
 
     //reset todo later
