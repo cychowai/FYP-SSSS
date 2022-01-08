@@ -20,6 +20,7 @@ function regenerateSecret(shares) {
     for (var i = 0, len = y.length; i < len; i++) {
         result = padLeft(lagrange(0, x, y[i]).toString(2)) + result;
     }
-    
-    return binToHex(result);
+
+    return binToHex(result.slice(result.indexOf("1") + 1));
+    //return binToHex(result);
 }

@@ -2,7 +2,7 @@ combineShares = function () {
     //pass the secret here
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
-    var sharesString = document.getElementById("shares").value;
+    var sharesString = document.getElementById("sharesCombine").value;
     console.log("shares from the input : ", sharesString);
 
     //checking whether the shares exist
