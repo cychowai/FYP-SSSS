@@ -1,11 +1,10 @@
 function splitNumStringToIntArray(str, padLength) {
-    var parts = [],
-        i;
+    var parts = [];
 
     if (padLength) {
         str = padLeft(str, padLength);
     }
-    for (i = str.length; i > defaultBits; i -= defaultBits) {
+    for (var i = str.length; i > defaultBits; i -= defaultBits) {
         parts.push(parseInt(str.slice(i - defaultBits, i), 2));
     }
     parts.push(parseInt(str.slice(0, i), 2));
@@ -18,8 +17,8 @@ function padLeft(str, multipleOfBits) {
     if (multipleOfBits === 0 || multipleOfBits === 1) {
         return str;
     }
-    if (multipleOfBits && multipleOfBits > 1024) {
-        alert("Padding must be multiples of no larger than 1024 bits.");
+    if (multipleOfBits && multipleOfBits > maxPadLength) {
+        alert("Padding must be multiples of no larger than " + maxPadLength + " bits.");
     }
     multipleOfBits = multipleOfBits || defaultBits;
     if (str) {
@@ -32,15 +31,14 @@ function padLeft(str, multipleOfBits) {
 }
 
 function getShares(secret, numShares, threshold) {
-    var shares = [],
-        coeffs = [secret],
-        i,
-        len;
+    var shares = [];
+    var coeffs = [secret];
+    var len;
 
-    for (i = 1; i < threshold; i++) {
+    for (var i = 1; i < threshold; i++) {
         coeffs[i] = parseInt(browserCryptoGetRandomValues(defaultBits), 2); //todo
     }
-    for (i = 1, len = numShares + 1; i < len; i++) {
+    for (var i = 1, len = numShares + 1; i < len; i++) {
         shares[i - 1] = {
             x: i,
             y: horner(i, coeffs)
@@ -50,11 +48,10 @@ function getShares(secret, numShares, threshold) {
 }
 
 function horner(x, coeffs) {
-    var logx = defaultLogs[x],
-        fx = 0,
-        i;
+    var logx = defaultLogs[x];
+    var fx = 0;
 
-    for (i = coeffs.length - 1; i >= 0; i--) {
+    for (var i = coeffs.length - 1; i >= 0; i--) {
         if (fx !== 0) {
             fx = defaultExps[(logx + defaultLogs[fx]) % maxShares] ^ coeffs[i];
         } else {
@@ -65,11 +62,7 @@ function horner(x, coeffs) {
 }
 
 function constructPublicShareString(bits, id, data) {
-    var bitsBase36,
-        idHex,
-        idMax,
-        idPaddingLen,
-        newShareString;
+    var bitsBase36, idHex, idMax, idPaddingLen, newShareString;
 
     id = parseInt(id, defaultBase);
     bits = parseInt(bits, 10) || defaultBits;
@@ -77,22 +70,21 @@ function constructPublicShareString(bits, id, data) {
     idMax = Math.pow(2, bits) - 1;
     idPaddingLen = idMax.toString(defaultBase).length;
     idHex = padLeft(id.toString(defaultBase), idPaddingLen);
-    if (typeof id !== "number" || id % 1 !== 0 || id < 1 || id > idMax) {
-        alert("Share id must be an integer between 1 and " + idMax + ", inclusive.");
-    }
     newShareString = bitsBase36 + idHex + data;
     return newShareString;
 }
 
-function construct(bits, arr, radix, size) {
-    var i = 0, len, str = "", parsedInt;
+function construct(bits, arr, base, size) {
+    var len, parsedInt;
+    var i = 0;
+    var str = "";
 
     if (arr) {
         len = arr.length - 1;
     }
     while (i < len || (str.length < bits)) {
         // convert any negative nums to positive with Math.abs()
-        parsedInt = Math.abs(parseInt(arr[i], radix));
+        parsedInt = Math.abs(parseInt(arr[i], base));
         str = str + padLeft(parsedInt.toString(2), size);
         i++;
     }
@@ -106,18 +98,19 @@ function construct(bits, arr, radix, size) {
 
 function browserCryptoGetRandomValues(bits) {
     var str = null; 
-    var radix = 10; 
+    var base = 10; 
     var size = 32; 
     var elems = Math.ceil(bits / 32);
 
     while (str === null) {
-        str = construct(bits, window.crypto.getRandomValues(new Uint32Array(elems)), radix, size);
+        str = construct(bits, window.crypto.getRandomValues(new Uint32Array(elems)), base, size);
     }
     return str;
 }
 
 function lagrange(at, x, y) {
-    var sum = 0, len, product;
+    var sum = 0;
+    var len, product;
 
     for (var i = 0, len = x.length; i < len; i++) {
         if (y[i]) {
@@ -128,11 +121,9 @@ function lagrange(at, x, y) {
                         product = -1; // fix for a zero product term, after which the sum should be sum^0 = sum, not sum^1
                         break;
                     }
-                    product = (product + defaultLogs[at ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares; // to make sure it's not negative
+                    product = (product + defaultLogs[at ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
                 }
             }
-            // though exps[-1] === undefined and undefined ^ anything = anything in
-            // chrome, this behavior may not hold everywhere, so do the check
             sum = product === -1 ? sum : sum ^ defaultExps[product];
         }
     }

@@ -3,7 +3,6 @@ function generateShares(secret, noOfShares, threshold, padLength) {
     var x = new Array(noOfShares);
     var y = new Array(noOfShares);
 
-    //secret = "1" + hexToBin(secret);
     secret = splitNumStringToIntArray(hexToBin(secret), padLength);
 
     for (var i = 0, len = secret.length; i < len; i++) {

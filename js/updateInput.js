@@ -1,6 +1,6 @@
 function updateThreshold() {
     //read the number of shares and threshold from the HTML
-    var threshold = document.getElementById("threshold").value;
+    var threshold = parseInt(document.getElementById("threshold").value);
 
     //check the number of threshold and update the number of threshold
     if (threshold < MIN_VALUE) {
@@ -23,7 +23,7 @@ function updateThreshold() {
 
 function updateShares() {
     //read the number of shares and threshold from the HTML
-    var noOfShares = document.getElementById("noOfShares").value;
+    var noOfShares = parseInt(document.getElementById("noOfShares").value);
 
     //check the number of shares and update the number of shares
     if (noOfShares < MIN_VALUE) {
@@ -45,8 +45,8 @@ function updateShares() {
 
 function checkUpdate() {
     //read the number of shares and threshold from the HTML
-    var threshold = document.getElementById("threshold").value;
-    var noOfShares = document.getElementById("noOfShares").value;
+    var threshold = parseInt(document.getElementById("threshold").value);
+    var noOfShares = parseInt(document.getElementById("noOfShares").value);
 
     //check whether threshold is not greater than the number of shares
     if (threshold > noOfShares) {
