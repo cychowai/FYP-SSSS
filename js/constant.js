@@ -15,7 +15,7 @@ const defaultSize = Math.pow(2, defaultBits);
 const maxShares = defaultSize - 1;
 
 const primitivePolynomials = [null, null, 1, 3, 3, 5, 3, 3, 29, 17, 9, 5, 83, 27, 43, 3, 45, 9, 39, 39, 9, 5, 3, 33, 27, 9, 71, 39, 9, 5, 83];
-const primitive = primitivePolynomials[defaultBits]; //GM(2^8)
+const primitive = primitivePolynomials[defaultBits]; //GF(2^8)
 
 var logs = [], exps = [], i, x = 1;
 for (i = 0; i < defaultSize; i++) {
