@@ -1,96 +1,57 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Final Year Project - Shamir Secret Sharing Scheme</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jim Chow">
     <meta name="description" content="Final Year Project --- Shamir's secret sharing scheme (CD1)">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sticky-menu.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="src/image/icon.png">
+    <!-- import css here -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Welcome</a>
+
+<body>
+    <div class="container">
+        <h1>Shamir Secret Sharing Scheme</h1>
+        <div class="centerContainer">
+            <div class="leftDiv">
+                <h2>Split / Encryption:</h2>
+                <h3>Require
+                    <input type="number" id="threshold" class="threshold" name="threshold" 
+                        size="3px" value="3" min="2" max="99" onchange="updateThreshold()"></input>
+                    parts from
+                    <input type="number" id="noOfShares" class="noOfShares" name="noOfShares" 
+                        size="3px" value="5" min="2" max="99" onchange="updateShares()"></input>
+                    to reconstruct the following secret:
+                </h3>
+                <textarea form="secret" class="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                    placeholder="Please type the secret here ..."></textarea>
+                <br>
+                <!-- split secret and display shares -->
+                <button onclick="splitSecret()">Split</button>
+                <h3>Share(s):</h3>
+                <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
-
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#generator">Share Generator</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#gen_with_convert">Share Generator with File Converter</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#combiner">Share Combiner</a>
-                    </li>
-                </ul>
-            </div>	
-        </div>		
-    </nav>
-
-    <section id="welcome" class="welcome-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Final Year Project --- Shamir's secret sharing scheme</h1>
-                    <a class="btn btn-primary page-scroll" href="#generator">Click To Scroll Down!</a>
-                </div>
+            <div class="rightDiv">
+                <h2>Combine / Decryption:</h2>
+                <h3>Put the shares here to combile for reconstruct the secret:</h3>
+                <textarea form="sharesRecombine" class="shares" name="sharesCombine" cols="60" rows="10" wrap="soft"
+                    placeholder="Please put the shares one by one per line ..."></textarea>
+                <br>
+                <!-- combine shares and regenerate the secret -->
+                <button onclick="combineShares()">Combine</button>
+                <h3>You can view your secret below, or download if it is a file:</h3>
+                <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
             </div>
         </div>
-    </section>
-
-    <section id="generator" class="generator">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Share Generator</h1>
-                    <p>you should gnenerate js for id(generator).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gen_with_convert" class="gen_with_convert">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Generator with File Converter</h1>
-                    <p>you should gnenerate js for id(gen_with_convert).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="combiner" class="combiner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Share Combiner</h1>
-                    <p>you should gnenerate js for id(combiner).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-	
-	<a id="back2Top" title="Back to top" href="#">&#10148;</a>
-    
-    <!--Load all js file at here.-->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/sticky-menu.js"></script>
-
+        <div></div>
+    </div>
+    <!-- import javaScript here -->
+    <script src="js/app.js"></script>
+    <script src="js/splitSecret.js"></script>
+    <script src="js/combineShares.js"></script>
 </body>
 
 </html>

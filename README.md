@@ -25,14 +25,16 @@
 [Proposal](https://docs.google.com/document/d/1ssRn5Mdr7cZdHyzd_QNMyg-0iYVcA5LMTyV-qPE8NLQ/edit?pli=1)
 
 ## Learning for localhost for a virtual server :
-* RUNNING python3 -m http.server in the folder directory
 [link](https://ronallo.com/iiif-workshop-new/preparation/web-server.html)
 
 ## Or after going to the path of the project folder, build it on virtual server by running :
 
 ```
-python compile.py
+python3 -m http.server
 ```
 
 ## Interim report :
 [Proposal](https://docs.google.com/document/d/1FH2lPfhv7l5zpBSC1p0CXG_1g6ul862hSerCk4UFglY/edit)
+
+## Monthly report :
+[Monthly Report](https://docs.google.com/document/d/1Eq_qfHpV2iJ5wAF9shnibCnU17B6blB723c3E5jDDfs/edit)

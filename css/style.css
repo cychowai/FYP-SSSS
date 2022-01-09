@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+div.container {
+    max-width: 1280px;
+    margin: auto;
+}
+
+div.centerContainer {
+    display: flex;
+    margin-left: 30px;
+}
+
+div.leftDiv {
+    width: 50%;
+}
+
+div.rightDiv {
+    width: 50%;
+}
+
+
