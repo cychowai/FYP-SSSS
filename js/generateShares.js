@@ -3,7 +3,8 @@ function generateShares(secret, noOfShares, threshold, padLength) {
     var x = new Array(noOfShares);
     var y = new Array(noOfShares);
 
-    secret = splitNumStringToIntArray("1" + hexToBin(secret), padLength);
+    //append "1" in front as a marker for leading zeros in the secret
+    secret = splitStringToArray("1" + hexToBin(secret), padLength); 
 
     for (var i = 0, len = secret.length; i < len; i++) {
         subShares = getShares(secret[i], noOfShares, threshold);
@@ -14,8 +15,25 @@ function generateShares(secret, noOfShares, threshold, padLength) {
     }
 
     for (var i = 0; i < noOfShares; i++) {
-        x[i] = constructPublicShareString(defaultBits, x[i], binToHex(y[i]));
+        x[i] = constructShare(defaultBits, x[i], binToHex(y[i]));
     }
 
     return x;
+}
+
+function getShares(secret, numShares, threshold) {
+    var shares = [];
+    var coeffs = [secret];
+    var len;
+
+    for (var i = 1; i < threshold; i++) {
+        coeffs[i] = parseInt(getRandomValues(defaultBits), 2); 
+    }
+    for (var i = 1, len = numShares + 1; i < len; i++) {
+        shares[i - 1] = {
+            x: i,
+            y: getRoots(i, coeffs)
+        };
+    }
+    return shares;
 }

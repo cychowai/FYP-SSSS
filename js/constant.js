@@ -1,11 +1,9 @@
-const MAX_VALUE = 255;
+const MAX_VALUE = 255; //2^8
 const MIN_VALUE = 2;
 const defaultThreshold = 3;
 const defaultShares = 5;
 
-const defaultBits = 8;
-const defaultMaxBits = 20;
-const defaultMinBits = 3;
+const defaultBits = 8; //^8
 const defaultBase = 16;
 const bytesPerChar = 2;
 const maxBytesPerChar = 6;
@@ -17,7 +15,7 @@ const defaultSize = Math.pow(2, defaultBits);
 const maxShares = defaultSize - 1;
 
 const primitivePolynomials = [null, null, 1, 3, 3, 5, 3, 3, 29, 17, 9, 5, 83, 27, 43, 3, 45, 9, 39, 39, 9, 5, 3, 33, 27, 9, 71, 39, 9, 5, 83];
-const primitive = primitivePolynomials[defaultBits]; 
+const primitive = primitivePolynomials[defaultBits]; //GM(2^8)
 
 var logs = [], exps = [], i, x = 1;
 for (i = 0; i < defaultSize; i++) {

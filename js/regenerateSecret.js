@@ -5,11 +5,11 @@ function regenerateSecret(shares) {
     var y = [];
 
     for (var i = 0, len = shares.length; i < len; i++) {
-        share = extractShareComponents(shares[i]);
+        share = extractShare(shares[i]);
 
         if (x.indexOf(share.id) === -1) {
             x.push(share.id);
-            splitShare = splitNumStringToIntArray(hexToBin(share.data));
+            splitShare = splitStringToArray(hexToBin(share.data));
             for (var j = 0, len2 = splitShare.length; j < len2; j++) {
                 y[j] = y[j] || [];
                 y[j][x.length - 1] = splitShare[j];
@@ -18,9 +18,9 @@ function regenerateSecret(shares) {
     }
 
     for (var i = 0, len = y.length; i < len; i++) {
-        result = padLeft(lagrange(0, x, y[i]).toString(2)) + result;
+        result = padLeft(setRange(0, x, y[i]).toString(2)) + result;
     }
 
-    return binToHex(result.slice(result.indexOf("1") + 1));
+    return binToHex(result.slice(result.indexOf("1") + 1)); //remove the maker "1"
     //return binToHex(result);
 }

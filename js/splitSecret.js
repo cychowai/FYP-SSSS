@@ -12,8 +12,6 @@ splitSecret = function () {
         alert("Please enter the secret!");
         return;
     }
-
-    //todo
     
     //split the secret into shares with no = noOfShares
     //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
@@ -21,9 +19,9 @@ splitSecret = function () {
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
-        var share = shares[i] + "\r\n\r\n";
+        var share = shares[i] + "\r\n\r\n"; //new line
         sharesString.push(share);
     }
 
-    document.getElementById("shares").value = sharesString.join("");
+    document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
 }

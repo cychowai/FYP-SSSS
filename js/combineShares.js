@@ -11,10 +11,8 @@ combineShares = function () {
         return;
     }
     
-    //todo
-    
     //combine shares into secret with no of shares >= threshold
-    var shares = sharesString.trim().split(/\s+/);
+    var shares = sharesString.trim().split(/\s+/); //identify shares with space
     console.log("shares : ", shares);
     var secret = hexToStr(regenerateSecret(shares));
     console.log("secret : ", secret);

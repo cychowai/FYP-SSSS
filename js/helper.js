@@ -1,4 +1,4 @@
-function splitNumStringToIntArray(str, padLength) {
+function splitStringToArray(str, padLength) {
     var parts = [];
 
     if (padLength) {
@@ -17,9 +17,6 @@ function padLeft(str, multipleOfBits) {
     if (multipleOfBits === 0 || multipleOfBits === 1) {
         return str;
     }
-    if (multipleOfBits && multipleOfBits > maxPadLength) {
-        alert("Padding must be multiples of no larger than " + maxPadLength + " bits.");
-    }
     multipleOfBits = multipleOfBits || defaultBits;
     if (str) {
         missing = str.length % multipleOfBits;
@@ -30,24 +27,7 @@ function padLeft(str, multipleOfBits) {
     return str;
 }
 
-function getShares(secret, numShares, threshold) {
-    var shares = [];
-    var coeffs = [secret];
-    var len;
-
-    for (var i = 1; i < threshold; i++) {
-        coeffs[i] = parseInt(browserCryptoGetRandomValues(defaultBits), 2); //todo
-    }
-    for (var i = 1, len = numShares + 1; i < len; i++) {
-        shares[i - 1] = {
-            x: i,
-            y: horner(i, coeffs)
-        };
-    }
-    return shares;
-}
-
-function horner(x, coeffs) {
+function getRoots(x, coeffs) {
     var logx = defaultLogs[x];
     var fx = 0;
 
@@ -61,55 +41,23 @@ function horner(x, coeffs) {
     return fx;
 }
 
-function constructPublicShareString(bits, id, data) {
-    var bitsBase36, idHex, idMax, idPaddingLen, newShareString;
-
-    id = parseInt(id, defaultBase);
-    bits = parseInt(bits, 10) || defaultBits;
-    bitsBase36 = bits.toString(36).toUpperCase();
-    idMax = Math.pow(2, bits) - 1;
-    idPaddingLen = idMax.toString(defaultBase).length;
-    idHex = padLeft(id.toString(defaultBase), idPaddingLen);
-    newShareString = bitsBase36 + idHex + data;
-    return newShareString;
-}
-
-function construct(bits, arr, base, size) {
-    var len, parsedInt;
-    var i = 0;
-    var str = "";
-
-    if (arr) {
-        len = arr.length - 1;
-    }
-    while (i < len || (str.length < bits)) {
-        // convert any negative nums to positive with Math.abs()
-        parsedInt = Math.abs(parseInt(arr[i], base));
-        str = str + padLeft(parsedInt.toString(2), size);
-        i++;
-    }
-    str = str.substr(-bits);
-    // return null so this result can be re-processed if the result is all 0's.
-    if ((str.match(/0/g) || []).length === str.length) {
-        return null;
-    }
-    return str;
-}
-
-function browserCryptoGetRandomValues(bits) {
+//use cyrpto in browser better than Math.random
+//https://developer.mozilla.org/en-US/docs/Web/API/Crypto
+function getRandomValues(bits) {
     var str = null; 
     var base = 10; 
     var size = 32; 
     var elems = Math.ceil(bits / 32);
 
-    while (str === null) {
+    while (!str) {
+        //random using cyrpto
         str = construct(bits, window.crypto.getRandomValues(new Uint32Array(elems)), base, size);
     }
     return str;
 }
 
-function lagrange(at, x, y) {
-    var sum = 0;
+function setRange(point, x, y) {
+    var sum = 0; //sum is 0 if a zero product term exists
     var len, product;
 
     for (var i = 0, len = x.length; i < len; i++) {
@@ -117,46 +65,17 @@ function lagrange(at, x, y) {
             product = defaultLogs[y[i]];
             for (var j = 0; j < len; j++) {
                 if (i !== j) {
-                    if (at === x[j]) { // happens when computing a share that is in the list of shares used to compute it
-                        product = -1; // fix for a zero product term, after which the sum should be sum^0 = sum, not sum^1
+                    if (point === x[j]) {
+                        product = -1; // fix for a zero product term
                         break;
                     }
-                    product = (product + defaultLogs[at ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
+                    product = (product + defaultLogs[point ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
                 }
             }
-            sum = product === -1 ? sum : sum ^ defaultExps[product];
+            if (product !== -1) { // fix for a zero product term
+                sum = sum ^ defaultExps[product];
+            }
         }
     }
     return sum;
-}
-
-function extractShareComponents(share) {
-    var bits, max, regexStr, shareComponents;
-    var obj = {};
-    var id, idLen;
-
-    // Extract the first char which represents the bits in Base 36
-    bits = parseInt(share.substr(0, 1), 36); 
-    max = Math.pow(2, bits) - 1;
-
-    // Determine the ID length which is variable and based on the bit count.
-    idLen = (Math.pow(2, bits) - 1).toString(defaultBase).length;
-
-    // Extract all the parts now that the segment sizes are known.
-    regexStr = "^([a-kA-K3-9]{1})([a-fA-F0-9]{" + idLen + "})([a-fA-F0-9]+)$";
-    shareComponents = new RegExp(regexStr).exec(share);
-
-    // The ID is a Hex number and needs to be converted to an Integer
-    if (shareComponents) {
-        id = parseInt(shareComponents[2], defaultBase);
-    }
-
-    if (shareComponents && shareComponents[3]) {
-        obj.bits = bits;
-        obj.id = id;
-        obj.data = shareComponents[3];
-        return obj;
-    }
-
-    alert("The share data provided is invalid : " + share);    
 }
