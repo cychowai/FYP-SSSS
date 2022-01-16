@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Jim Chow">
     <meta name="description" content="Final Year Project --- Shamir's secret sharing scheme (CD1)">
-    <link rel="icon" type="image/x-icon" href="src/image/icon.png">
+    <link rel="icon" type="image/x-icon" href="images/icon.png">
     <!-- import css here -->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -26,9 +26,18 @@
                         size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
-                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                <canvas id="image-canvas" width="480" height="360"></canvas>
+                <select id="input-image">
+                    <option value="doge.jpeg">Dog</option>
+                    <option value="beastsenpai.png">Man</option>
+                    <option value="bananice.jpeg">Banana</option>
+                    <option value="starburststream.png">Teen</option>
+                    <option value="bear.jpeg">Teddy bear</option>
+                    <option value="shifuloveu.jpeg">ShiFu</option>
+                </select>
+                <!-- <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."></textarea>
-                <br>
+                <br> -->
                 <!-- split secret and display shares -->
                 <button onclick="splitSecret(); checkUpdate();">Split</button>
                 <h3>Share(s):</h3>
@@ -49,10 +58,18 @@
         <div></div>
     </div>
     <!-- import javaScript here -->
+    <script src="jquery/jquery-3.5.1.min.js"></script>
     <script src="js/updateInput.js"></script>
     <script src="js/splitSecret.js"></script>
     <script src="js/combineShares.js"></script>
+    <script src="js/generateShares.js"></script>
+    <script src="js/transform.js"></script>
+    <script src="js/regenerateSecret.js"></script>
+    <script src="js/helper.js"></script>
     <script src="js/constant.js"></script>
+    <script src="js/extractShare.js"></script>
+    <script src="js/construct.js"></script>
+    <script src="js/image.js"></script>
 </body>
 
 </html>

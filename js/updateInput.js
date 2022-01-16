@@ -63,4 +63,3 @@ function checkUpdate() {
     console.log("threshold : ", threshold);
     console.log("noOfShares : ", noOfShares);
 }
-

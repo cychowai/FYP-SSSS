@@ -1,4 +1,9 @@
 splitSecret = function () {
+    var inputImage = input.getImageData(0, 0, input.canvas.clientWidth, input.canvas.clientHeight);
+    console.log("inputImage : ", inputImage);
+    //var outputImage = output.createImageData(input.canvas.clientWidth, input.canvas.clientHeight);
+    
+    /*
     //pass the shares here
     var noOfShares = parseInt(document.getElementById("noOfShares").value);
     console.log("noOfShares : ", noOfShares);
@@ -7,15 +12,24 @@ splitSecret = function () {
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
 
+    //console.log("logs, exps ", defaultLogs, defaultExps);
+
     //checking whether the secret exists
     if (!secret) {
         alert("Please enter the secret!");
         return;
     }
-
-    //todo
     
     //split the secret into shares with no = noOfShares
+    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares
+    
+    var sharesString = [];
+    for (var i = 0; i < shares.length; i++) {
+        var share = shares[i] + "\r\n\r\n"; //new line
+        sharesString.push(share);
+    }
 
-    document.getElementById("shares").value = '//todo';
+    document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
+    */
 }
