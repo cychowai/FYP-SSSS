@@ -19,25 +19,29 @@
             <div class="leftDiv">
                 <h2>Split / Encryption:</h2>
                 <h3>Require
-                    <input type="number" id="threshold" name="threshold" 
+                    <input type="number" id="threshold" class="threshold" name="threshold" 
                         size="3px" value="3" min="2" max="255" onchange="updateThreshold();"></input>
                     parts from
-                    <input type="number" id="noOfShares" name="noOfShares" 
+                    <input type="number" id="noOfShares" class="noOfShares" name="noOfShares" 
                         size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
-                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                <textarea id="secret-input" form="secret" class="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."></textarea>
                 <br>
                 <!-- split secret and display shares -->
                 <button onclick="splitSecret(); checkUpdate();">Split</button>
+				<input type="file" style="display: none" onchange="fileUpT(this)" id="file-up-t">
+				<input type="button" value="Upload and Split Image(Text Output)" onclick="document.getElementById('file-up-t').click();"/>
+				<input type="file" style="display: none" onchange="fileUpI(this)" id="file-up-i">
+				<input type="button" value="Upload and Split Image(Image Output)(In Progress)" onclick="document.getElementById('file-up-i').click();"/>
                 <h3>Share(s):</h3>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
-                <textarea form="sharesRecombine" id="sharesCombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
+                <textarea form="sharesRecombine" class="shares" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
                 <br>
                 <!-- combine shares and regenerate the secret -->
@@ -49,10 +53,14 @@
         <div></div>
     </div>
     <!-- import javaScript here -->
-    <script src="js/updateInput.js"></script>
+	<script src="js/exif.js"></script>
+	<script src="js/base64-image.js"></script>
+    <script src="js/secrets.js"></script>
+    <script src="js/app.js"></script>	
     <script src="js/splitSecret.js"></script>
     <script src="js/combineShares.js"></script>
-    <script src="js/constant.js"></script>
+	<script src="js/file-up-t.js"></script>
+	<script src="js/file-up-i.js"></script>
 </body>
 
 </html>
