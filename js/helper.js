@@ -11,18 +11,22 @@ function splitStringToArray(str, padLength) {
     return parts;
 }
 
+//filling bits when changing base for string with 
 function padLeft(str, multipleOfBits) {
-    var missing;
-
+    var missingBits;
+    //no padding needed for case 0 or 1
     if (multipleOfBits === 0 || multipleOfBits === 1) {
         return str;
     }
-    multipleOfBits = multipleOfBits || defaultBits;
+    //calculating the missing bits needed for filling on left
     if (str) {
-        missing = str.length % multipleOfBits;
+        missingBits = multipleOfBits - str.length % multipleOfBits;
     }
-    if (missing) {
-        return (preGenPadding + str).slice(-(multipleOfBits - missing + str.length));
+    //adding padding with missing bits on the left of the string
+    if (missingBits) {
+        //pre-generated padding : an array of "0" for adding up bits
+        //'-' use for slice text from the rightmost with missing bits + string
+        return (preGenPadding + str).slice(-(missingBits + str.length));
     }
     return str;
 }
@@ -50,7 +54,7 @@ function getRandomValues(bits) {
     var elems = Math.ceil(bits / 32);
 
     while (!str) {
-        //random using cyrpto
+        //construct random str using cyrpto
         str = construct(bits, window.crypto.getRandomValues(new Uint32Array(elems)), base, size);
     }
     return str;
@@ -72,7 +76,8 @@ function setRange(point, x, y) {
                     product = (product + defaultLogs[point ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
                 }
             }
-            if (product !== -1) { // fix for a zero product term
+            //case for fixing for a zero product term
+            if (product !== -1) { 
                 sum = sum ^ defaultExps[product];
             }
         }
