@@ -21,7 +21,7 @@ splitSecret = function () {
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
-        var share = shares[i] + "\r\n\r\n"; //new line
+        var share = shares[i] + "\r\n\r\n"; //new line for shares
         sharesString.push(share);
     }
 

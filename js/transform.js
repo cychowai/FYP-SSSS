@@ -5,6 +5,7 @@ function hexToStr(str) {
     hexChars = 2 * bytesPerChar;
     str = padLeft(str, hexChars);
     for (var i = 0, len = str.length; i < len; i += hexChars) {
+        //convert to string from charcode
         out = String.fromCharCode(parseInt(str.slice(i, i + hexChars), 16)) + out;
     }
     return out;
@@ -12,15 +13,11 @@ function hexToStr(str) {
 
 //base string to 16
 function strToHex(str) {
-    var hexChars, max, out = "", neededBytes, num, len;
+    var hexChars, out = "", num, len;
 
     hexChars = 2 * bytesPerChar;
-    max = Math.pow(16, hexChars) - 1;
     for (var i = 0, len = str.length; i < len; i++) {
         num = str[i].charCodeAt();
-        if (num > max) {
-            neededBytes = Math.ceil(Math.log(num + 1) / Math.log(256));
-        }
         out = padLeft(num.toString(16), hexChars) + out;
     }
     return out;
