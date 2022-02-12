@@ -8,6 +8,8 @@ splitSecret = function () {
     console.log("threshold : ", threshold);
 
     //console.log("logs, exps ", defaultLogs, defaultExps);
+    console.log("primitive : ", primitive);
+    console.log("primitiveP : ", primitivePolynomials);
 
     //checking whether the secret exists
     if (!secret) {
