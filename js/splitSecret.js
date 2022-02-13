@@ -7,9 +7,8 @@ splitSecret = function () {
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
 
-    //console.log("logs, exps ", defaultLogs, defaultExps);
-    console.log("primitive : ", primitive);
-    console.log("primitiveP : ", primitivePolynomials);
+    console.log("defaultExps: ", defaultExps);
+    console.log("defaultLogs: ", defaultLogs);
 
     //checking whether the secret exists
     if (!secret) {

@@ -1,6 +1,6 @@
 function splitStringToArray(str, padLength) {
     var parts = [];
-
+    //padlength variable allows us to set the padding manually
     if (padLength) {
         str = padLeft(str, padLength);
     }
@@ -66,24 +66,26 @@ function getRandomValues(bits) {
     return str;
 }
 
-function setRange(point, x, y) {
+function LagrangeInterpolation(x, y) {
     var sum = 0; //sum is 0 if a zero product term exists
-    var len, product;
-
-    for (var i = 0, len = x.length; i < len; i++) {
+    var product;
+    for (var i = 0; i < x.length; i++) {
         if (y[i]) {
             product = defaultLogs[y[i]];
-            for (var j = 0; j < len; j++) {
+            for (var j = 0; j < x.length; j++) {
                 if (i !== j) {
                     if (point === x[j]) {
                         product = -1; // fix for a zero product term
                         break;
                     }
-                    product = (product + defaultLogs[point ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
+                    //x = 0
+                    //+ maxShares to ensure the product after mod is positive
+                    product = (product + defaultLogs[0 ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
                 }
             }
-            //case for fixing for a zero product term
+            //case for excepting for i = j condition in lagrange interpolation
             if (product !== -1) { 
+                //XOR
                 sum = sum ^ defaultExps[product];
             }
         }
