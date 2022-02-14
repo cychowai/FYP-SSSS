@@ -34,7 +34,7 @@ function padLeft(str, multipleOfBits) {
     return str;
 }
 
-function getRoots(x, coeffs) {
+function horner(x, coeffs) {
     var logx = defaultLogs[x];
     var fx = 0;
 
