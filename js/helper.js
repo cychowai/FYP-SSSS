@@ -34,13 +34,13 @@ function padLeft(str, multipleOfBits) {
     return str;
 }
 
+//Horner's method
 function horner(x, coeffs) {
-    var logx = defaultLogs[x];
     var fx = 0;
 
     for (var i = coeffs.length - 1; i >= 0; i--) {
         if (fx !== 0) {
-            fx = defaultExps[(logx + defaultLogs[fx]) % maxShares] ^ coeffs[i];
+            fx = defaultExps[(defaultLogs[x] + defaultLogs[fx]) % maxShares] ^ coeffs[i];
         } else {
             fx = coeffs[i];
         }
