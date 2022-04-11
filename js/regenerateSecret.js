@@ -1,24 +1,23 @@
 function regenerateSecret(shares) {
-    var len, len2;
-    var result = "", share, splitShare;
+    var result = "";
     var x = [];
     var y = [];
 
-    for (var i = 0, len = shares.length; i < len; i++) {
-        share = extractShare(shares[i]);
+    for (var i = 0; i < shares.length; i++) {
+        var share = extractShare(shares[i]);
 
         if (x.indexOf(share.id) === -1) {
             x.push(share.id);
-            splitShare = splitStringToArray(hexToBin(share.data));
-            for (var j = 0, len2 = splitShare.length; j < len2; j++) {
+            var splitShare = splitStringToArray(hexToBin(share.data));
+            for (var j = 0; j < splitShare.length; j++) {
                 y[j] = y[j] || [];
                 y[j][x.length - 1] = splitShare[j];
             }
         }
     }
 
-    for (var i = 0, len = y.length; i < len; i++) {
-        result = padLeft(setRange(0, x, y[i]).toString(2)) + result;
+    for (var i = 0; i < y.length; i++) {
+        result = padLeft(LagrangeInterpolation(x, y[i]).toString(2)) + result;
     }
 
     return binToHex(result.slice(result.indexOf("1") + 1)); //remove the maker "1"

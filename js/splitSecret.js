@@ -7,7 +7,8 @@ splitSecret = function () {
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
 
-    //console.log("logs, exps ", defaultLogs, defaultExps);
+    console.log("defaultExps: ", defaultExps);
+    console.log("defaultLogs: ", defaultLogs);
 
     //checking whether the secret exists
     if (!secret) {
@@ -21,7 +22,7 @@ splitSecret = function () {
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
-        var share = shares[i] + "\r\n\r\n"; //new line
+        var share = shares[i] + "\r\n\r\n"; //new line for shares
         sharesString.push(share);
     }
 
