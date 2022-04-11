@@ -1,4 +1,4 @@
-//
+//lagrange interpolation
 function lagrangeInterpolation(x, y) {
   var sum = 0; //sum is 0 if a zero product term exists
   var product;
