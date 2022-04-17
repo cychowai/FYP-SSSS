@@ -7,8 +7,6 @@ splitSecret = function () {
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
 
-    //console.log("logs, exps ", defaultLogs, defaultExps);
-
     //checking whether the secret exists
     if (!secret) {
         alert("Please enter the secret!");
