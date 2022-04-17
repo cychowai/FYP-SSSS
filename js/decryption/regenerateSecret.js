@@ -17,7 +17,7 @@ function regenerateSecret(shares) {
     }
 
     for (var i = 0; i < y.length; i++) {
-        result = padLeft(lagrangeInterpolation(x, y[i]).toString(2)) + result;
+        result = padLeft(lagrangeInterpolation(0, x, y[i]).toString(2)) + result;
     }
 
     return binToHex(result.slice(result.indexOf("1") + 1)); //remove the maker "1"

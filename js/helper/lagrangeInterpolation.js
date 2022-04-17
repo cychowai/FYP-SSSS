@@ -1,5 +1,5 @@
 //lagrange interpolation
-function lagrangeInterpolation(x, y) {
+function lagrangeInterpolation(point, x, y) {
   var sum = 0; //sum is 0 if a zero product term exists
   var product;
   for (var i = 0; i < x.length; i++) {
@@ -13,7 +13,7 @@ function lagrangeInterpolation(x, y) {
                   }
                   //x = 0
                   //+ maxShares to ensure the product after mod is positive
-                  product = (product + defaultLogs[0 ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
+                  product = (product + defaultLogs[point ^ x[j]] - defaultLogs[x[i] ^ x[j]] + maxShares) % maxShares;
               }
           }
           //case for excepting for i = j condition in lagrange interpolation
