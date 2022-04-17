@@ -7,13 +7,13 @@ function padLeft(str, multipleOfBits) {
   }
   //calculating the missing bits needed for filling on left
   if (str) {
-      missingBits = multipleOfBits - str.length % multipleOfBits;
+      missingBits = str.length % multipleOfBits;
   }
   //adding padding with missing bits on the left of the string
   if (missingBits) {
       //pre-generated padding : an array of "0" for adding up bits
       //'-' use for slice text from the rightmost with missing bits + string
-      return (preGenPadding + str).slice(-(missingBits + str.length));
+      return (preGenPadding + str).slice(-(multipleOfBits - missingBits + str.length));
   }
   return str;
 }
