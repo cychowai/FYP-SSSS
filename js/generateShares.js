@@ -1,12 +1,12 @@
 function generateShares(secret, noOfShares, threshold, padLength) {
-    var subShares;
+    var subShares, len;
     var x = new Array(noOfShares);
     var y = new Array(noOfShares);
 
     //append "1" in front as a marker for leading zeros in the secret
     secret = splitStringToArray("1" + hexToBin(secret), padLength); 
 
-    for (var i = 0; i < secret.length; i++) {
+    for (var i = 0, len = secret.length; i < len; i++) {
         subShares = getShares(secret[i], noOfShares, threshold);
         for (var j = 0; j < noOfShares; j++) {
             x[j] = x[j] || subShares[j].x.toString(defaultBase);
@@ -24,14 +24,15 @@ function generateShares(secret, noOfShares, threshold, padLength) {
 function getShares(secret, numShares, threshold) {
     var shares = [];
     var coeffs = [secret];
+    var len;
 
     for (var i = 1; i < threshold; i++) {
         coeffs[i] = parseInt(getRandomValues(defaultBits), 2); 
     }
-    for (var i = 1; i < numShares + 1; i++) {
+    for (var i = 1, len = numShares + 1; i < len; i++) {
         shares[i - 1] = {
             x: i,
-            y: horner(i, coeffs)
+            y: getRoots(i, coeffs)
         };
     }
     return shares;
