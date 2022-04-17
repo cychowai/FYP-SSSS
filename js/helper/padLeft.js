@@ -5,6 +5,8 @@ function padLeft(str, multipleOfBits) {
   if (multipleOfBits === 0 || multipleOfBits === 1) {
       return str;
   }
+  //if there is no multipleOfBits put in this function, it will use the default bits
+  multipleOfBits = multipleOfBits || defaultBits;
   //calculating the missing bits needed for filling on left
   if (str) {
       missingBits = str.length % multipleOfBits;
