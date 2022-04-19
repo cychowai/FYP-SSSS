@@ -73,12 +73,13 @@
 			</div>
 			<div class="imageRighttDiv">
 				<h2>Combine / Decryption:</h2>
-				<h3>Put the shares here to combile for reconstruct the secret:</h3>
+				<h3>Upload the share files one by one to reconstruct the secret:</h3>
 				<!-- <input type="file" id="sharesLoader" name="sharesLoader" src="" width="" height=""/> -->
 				<input type="file" id="sharesLoader" name="sharesLoader">
 				<br>
 				<br>
 				<button onclick="image_combineShares();">Combine</button>
+				<button onclick="download_secret_image();">Download Image</button>
 				<br>
 				<br>
 				<canvas id="myCanvas2" width="400" height="300"
@@ -120,6 +121,7 @@
 	<script src="js/image/image_generateShares.js"></script>
 	<script src="js/image/image_combineShares.js"></script>
 	<script src="js/image/updateInput_2.js"></script>
+	<script src="js/image/download_secret_image.js"></script>
 </body>
 
 </html>
