@@ -26,10 +26,12 @@
                         size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
-                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft" onblur = "document.getElementById('textLoader').value = '';"
                     placeholder="Please type the secret here ..."></textarea>
                 <br>
                 <!-- split secret and display shares -->
+                <p style="display:inline;">upload text file:</p>
+				<input type="file" id="textLoader" name="textLoader" accept=".txt" onchange="updateTextInput(this.files[0])" src="" width="" height=""></br>
                 <button onclick="splitSecret(); checkUpdate();">Split</button>
                 <h3>Share(s):</h3>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
