@@ -7,9 +7,6 @@ splitSecret = function () {
     var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
 
-    console.log("defaultExps: ", defaultExps);
-    console.log("defaultLogs: ", defaultLogs);
-
     //checking whether the secret exists
     if (!secret) {
         alert("Please enter the secret!");
@@ -17,8 +14,8 @@ splitSecret = function () {
     }
     
     //split the secret into shares with no = noOfShares
-    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
-    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares
+    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //most secure
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares but still secure
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
