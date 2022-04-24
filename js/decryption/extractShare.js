@@ -9,7 +9,6 @@ function extractShare(share) {
 
     if (shareComponents) {
         var id = parseInt(shareComponents[2], defaultBase);
-
         if (shareComponents[3]) {
             obj.bits = bits;
             obj.id = id;

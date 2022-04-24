@@ -1,6 +1,7 @@
 //lagrange interpolation
 function lagrangeInterpolation(point, x, y) {
     var sum = 0; //sum is 0 if a zero product term exists
+    
     for (var i = 0; i < x.length; i++) {
         if (y[i]) {
             var product = defaultLogs[y[i]];
@@ -21,5 +22,6 @@ function lagrangeInterpolation(point, x, y) {
             }
         }
     }
+
     return sum;
 }
