@@ -12,6 +12,12 @@ function displayImage() {
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
 
+  const textBtn1 = document.getElementById("textBtn1");
+  const imageBtn1 = document.getElementById("imageBtn1");
+  const textBtn2 = document.getElementById("textBtn2");
+  const imageBtn2a = document.getElementById("imageBtn2a");
+  const imageBtn2b = document.getElementById("imageBtn2b");
+
   textSecret.style.display = "none";
   textShares.style.display = "none";
   textSharesInput.style.display = "none";
@@ -26,6 +32,12 @@ function displayImage() {
   imageBtn.style.color = "#ffffff";
   textBtn.style.backgroundColor = "#efefef";
   textBtn.style.color = "#000000";
+
+  textBtn1.style.display = "none";
+  imageBtn1.style.display = "block";
+  textBtn2.style.display = "none";
+  imageBtn2a.style.display = "block";
+  imageBtn2b.style.display = "block";
 }
 
 function displayText() {
@@ -42,6 +54,12 @@ function displayText() {
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
 
+  const textBtn1 = document.getElementById("textBtn1");
+  const imageBtn1 = document.getElementById("imageBtn1");
+  const textBtn2 = document.getElementById("textBtn2");
+  const imageBtn2a = document.getElementById("imageBtn2a");
+  const imageBtn2b = document.getElementById("imageBtn2b");
+
   textSecret.style.display = "block";
   textShares.style.display = "block";
   textSharesInput.style.display = "block";
@@ -56,4 +74,10 @@ function displayText() {
   textBtn.style.color = "#ffffff";
   imageBtn.style.backgroundColor = "#efefef";
   imageBtn.style.color = "#000000";
+
+  textBtn1.style.display = "block";
+  imageBtn1.style.display = "none";
+  textBtn2.style.display = "block";
+  imageBtn2a.style.display = "none";
+  imageBtn2b.style.display = "none";
 }

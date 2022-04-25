@@ -33,7 +33,8 @@
 				<br><br>
 
                 <!-- split secret and display shares -->
-				<button onclick="splitSecret(); checkUpdate();">Split</button>
+				<button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
+                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();" style="display: none; margin-bottom: 28px;">Split and Download</button>
 				<br><br>
 
                 <h3>Share(s):</h3>
@@ -52,7 +53,9 @@
 				<br><br>
 
                 <!-- combine shares and regenerate the secret -->
-				<button onclick="combineShares();">Combine</button>
+				<button id="textBtn2" onclick="combineShares();">Combine</button>
+                <button id="imageBtn2a" onclick="imageCombineShares();" style="display: none; margin-bottom: 5px;">Combine</button>
+                <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download Image</button>
 				<br><br>
 
                 <h3>You can view your secret below:</h3>
@@ -68,7 +71,6 @@
             &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
             <button id="imageBtn" class="selectImageBtn" onclick="displayImage();">Image</button>
         </div>
-        <!-- kept but not used ? -->
 		<div>
 			<textarea id="temp_1" hidden></textarea>
 			<textarea id="temp_2" hidden></textarea>
@@ -95,12 +97,11 @@
     <script src="js/helper/padLeft.js"></script>
     <script src="js/helper/splitStringToArray.js"></script>
     <!-- image functions -->
-    <!-- <script src="js/image/image.js"></script>
+    <script src="js/image/image.js"></script>
 	<script src="js/image/uploadFiles.js"></script>
-	<script src="js/image/image_splitSecret.js"></script>
-	<script src="js/image/image_generateShares.js"></script>
-	<script src="js/image/image_combineShares.js"></script>
-	<script src="js/image/updateInput_2.js"></script> -->
+	<script src="js/image/imageSplitSecret.js"></script>
+	<script src="js/image/generateImageShares.js"></script>
+	<script src="js/image/imageCombineShares.js"></script>
 </body>
 
 </html>
