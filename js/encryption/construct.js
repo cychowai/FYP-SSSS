@@ -5,7 +5,9 @@ function construct(bits, arr, base, size) {
         var parsedInt = Math.abs(parseInt(arr[i], base)); //must positive
         str += padLeft(parsedInt.toString(2), size);
     }
+    
     str = str.substr(-bits);
+
     //reconstruct if all are 0
     if ((str.match(/0/g) || []).length === str.length) {
         return null;

@@ -26,32 +26,60 @@
                         size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
+
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."></textarea>
-                <br>
+                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height="" style="display: none;"></input>
+				<br><br>
+
                 <!-- split secret and display shares -->
-                <button onclick="splitSecret(); checkUpdate();">Split</button>
+				<button onclick="splitSecret(); checkUpdate();">Split</button>
+				<br><br>
+
                 <h3>Share(s):</h3>
+				<canvas id="myCanvas1" width="400" height="300" style="display: none;">
+				    Your browser does not support the HTML5 canvas tag.
+				</canvas>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
+                
                 <textarea form="sharesRecombine" id="sharesCombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
-                <br>
+                <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader" src="" width="" height="" style="display: none;"></input>
+				<br><br>
+
                 <!-- combine shares and regenerate the secret -->
-                <button onclick="combineShares();">Combine</button>
-                <h3>You can view your secret below, or download if it is a file:</h3>
+				<button onclick="combineShares();">Combine</button>
+				<br><br>
+
+                <h3>You can view your secret below:</h3>
+				<canvas id="myCanvas2" width="400" height="300" style="display: none;">
+				    Your browser does not support the HTML5 canvas tag.
+				</canvas>
                 <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
             </div>
         </div>
-        <div></div>
+        <br><br>
+        <div class="selectDiv">
+            <button id="textBtn" class="selectTextBtn" onclick="displayText();">Text</button>
+            &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
+            <button id="imageBtn" class="selectImageBtn" onclick="displayImage();">Image</button>
+        </div>
+        <!-- kept but not used ? -->
+		<div>
+			<textarea id="temp_1" hidden></textarea>
+			<textarea id="temp_2" hidden></textarea>
+		</div>
+		<br>
     </div>
     <!-- import javaScript here -->
     <script src="js/constant.js"></script>
     <script src="js/transform.js"></script>
     <script src="js/updateInput.js"></script>
+    <script src="js/switch.js"></script>
     <!-- encryption process -->
     <script src="js/encryption/construct.js"></script>
     <script src="js/encryption/generateShares.js"></script>
@@ -60,12 +88,19 @@
     <script src="js/decryption/combineShares.js"></script>
     <script src="js/decryption/extractShare.js"></script>
     <script src="js/decryption/regenerateSecret.js"></script>
-    <!-- helper functions-->
+    <!-- helper functions -->
     <script src="js/helper/getRandomValues.js"></script>
     <script src="js/helper/horner.js"></script>
     <script src="js/helper/lagrangeInterpolation.js"></script>
     <script src="js/helper/padLeft.js"></script>
     <script src="js/helper/splitStringToArray.js"></script>
+    <!-- image functions -->
+    <!-- <script src="js/image/image.js"></script>
+	<script src="js/image/uploadFiles.js"></script>
+	<script src="js/image/image_splitSecret.js"></script>
+	<script src="js/image/image_generateShares.js"></script>
+	<script src="js/image/image_combineShares.js"></script>
+	<script src="js/image/updateInput_2.js"></script> -->
 </body>
 
 </html>

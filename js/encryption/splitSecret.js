@@ -1,10 +1,12 @@
 splitSecret = function () {
-    //pass the shares here
+    //pass the parameters here
     var noOfShares = parseInt(document.getElementById("noOfShares").value);
-    console.log("noOfShares : ", noOfShares);
     var secret = document.getElementById("secret").value;
-    console.log("secret : ", secret);
     var threshold = parseInt(document.getElementById("threshold").value);
+
+    //logging
+    console.log("noOfShares : ", noOfShares);
+    console.log("secret : ", secret);
     console.log("threshold : ", threshold);
 
     //checking whether the secret exists
@@ -20,7 +22,7 @@ splitSecret = function () {
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
         var share = shares[i] + "\r\n\r\n"; //new line for shares
-        sharesString.push(share);
+        sharesString.push(share); //push the shares into an array to display
     }
 
     document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
