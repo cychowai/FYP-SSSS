@@ -15,10 +15,14 @@ function generateShares(secret, noOfShares, threshold, padLength) {
             y[j] = padLeft(subShares[j].y.toString(2)) + (y[j] || "");
         }
     }
+	console.log(x);
+	console.log(y);
 
     for (var i = 0; i < noOfShares; i++) {
         x[i] = constructShare(defaultBits, x[i], binToHex(y[i]));
     }
+	
+	console.log(x);
 
     return x;
 }

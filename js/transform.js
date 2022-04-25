@@ -70,3 +70,9 @@ function hexToInt(str,n) {
 	return out;
 }
 
+function hexToInt_2(str,n) {
+	var out = 0;
+	out = parseInt(str.slice(n*2 - 2, n*2), 16);
+	return out;
+}
+

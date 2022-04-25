@@ -37,3 +37,13 @@ splitSecret = function () {
 
     document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
 }
+function updateTextInput(file){
+    var secretBox = document.getElementById('secret');
+    secretBox.value = '';
+    
+    var fileReader = new FileReader();
+    fileReader.onload = function(){
+        secretBox.value = fileReader.result;
+    }
+    fileReader.readAsText(file);
+}
