@@ -51,3 +51,19 @@ function binToHex(str) {
     }
     return hex;
 }
+
+function intToHex(num) {
+	var out = "";
+	var hexChars = 2 * bytesPerChar;
+	out = padLeft(num.toString(16), hexChars) + out;
+	return out;
+}
+
+function hexToInt(str,n) {
+	var out = 0;
+	var hexChars = 2 * bytesPerChar;
+	str = padLeft(str, hexChars);
+	out = parseInt(str.slice(n - hexChars, n), 16);
+	return out;
+}
+

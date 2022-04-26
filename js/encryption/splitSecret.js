@@ -1,29 +1,45 @@
 splitSecret = function () {
-    //pass the parameters here
+    //pass the shares here
     var noOfShares = parseInt(document.getElementById("noOfShares").value);
-    var secret = document.getElementById("secret").value;
-    var threshold = parseInt(document.getElementById("threshold").value);
-
-    //logging
     console.log("noOfShares : ", noOfShares);
+    var secret = document.getElementById("secret").value;
     console.log("secret : ", secret);
+    var threshold = parseInt(document.getElementById("threshold").value);
     console.log("threshold : ", threshold);
+
+    console.log("defaultExps: ", defaultExps);
+    console.log("defaultLogs: ", defaultLogs);
 
     //checking whether the secret exists
     if (!secret) {
         alert("Please enter the secret!");
         return;
     }
-    
+	
+	//return if threshold > noOfShares
+	if (threshold > noOfShares) {
+		return;
+	}
+	    
     //split the secret into shares with no = noOfShares
-    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //most secure
-    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares but still secure
+    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares
     
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
         var share = shares[i] + "\r\n\r\n"; //new line for shares
-        sharesString.push(share); //push the shares into an array to display
+        sharesString.push(share);
     }
 
     document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
+}
+function updateTextInput(file){
+    var secretBox = document.getElementById('secret');
+    secretBox.value = '';
+    
+    var fileReader = new FileReader();
+    fileReader.onload = function(){
+        secretBox.value = fileReader.result;
+    }
+    fileReader.readAsText(file);
 }

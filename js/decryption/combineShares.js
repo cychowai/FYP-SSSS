@@ -1,10 +1,8 @@
 combineShares = function () {
-    //pass the parameter here
+    //pass the secret here
     var threshold = parseInt(document.getElementById("threshold").value);
-    var sharesString = document.getElementById("sharesCombine").value;
-
-    //logging
     console.log("threshold : ", threshold);
+    var sharesString = document.getElementById("sharesCombine").value;
     console.log("shares from the input : ", sharesString);
 
     //checking whether the shares exist
@@ -15,11 +13,8 @@ combineShares = function () {
     
     //combine shares into secret with no of shares >= threshold
     var shares = sharesString.trim().split(/\s+/); //identify shares with space
-    var secret = hexToStr(regenerateSecret(shares));
-
-    //logging
     console.log("shares : ", shares);
+    var secret = hexToStr(regenerateSecret(shares));
     console.log("secret : ", secret);
-    
     document.getElementById("showSecret").value = secret;
 }

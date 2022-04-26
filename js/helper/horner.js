@@ -9,6 +9,5 @@ function horner(x, coeffs) {
           fx = coeffs[i];
       }
   }
-  
   return fx;
 }
