@@ -53,11 +53,17 @@ image_splitSecret = function () {
 	for (var i = 0; i < shares.length; i++) {
 		console.log(shares[i]);
 	}
+<<<<<<< Updated upstream
 	
 	
 	for (var i = 0; i < shares.length; i++) {
 		var name = "Share" + parseInt(i+1) + "_" + shares.length + "-" + imgData.width + "&" + imgData.height;
 		download_image_shares(name, shares[i], imgData.width, imgData.height);
+=======
+	for (var i = 0; i < shares.length; i++) {
+		var name = "Share" + parseInt(i+1) + "_" + shares.length + "-" + imgData.width + "&" + imgData.height;
+		download(name, shares[i]);
+>>>>>>> Stashed changes
 	}
 	
 	

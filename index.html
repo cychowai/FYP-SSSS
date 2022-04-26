@@ -28,12 +28,19 @@
                 </h3>
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft" onblur = "document.getElementById('textLoader').value = '';"
                     placeholder="Please type the secret here ..."></textarea>
+<<<<<<< Updated upstream
 				<br>
                 <br>
                 <!-- split secret and display shares -->
                 <!-- <p style="display:inline;">upload text file:</p> -->
 				<input type="file" id="textLoader" name="textLoader" accept=".txt" onchange="updateTextInput(this.files[0])" src="" width="" height=""></br>
 				<br>
+=======
+                <br>
+                <!-- split secret and display shares -->
+                <p style="display:inline;">upload text file:</p>
+				<input type="file" id="textLoader" name="textLoader" accept=".txt" onchange="updateTextInput(this.files[0])" src="" width="" height=""></br>
+>>>>>>> Stashed changes
                 <button onclick="splitSecret(); checkUpdate();">Split</button>
                 <h3>Share(s):</h3>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
@@ -45,11 +52,15 @@
                     placeholder="Please put the shares one by one per line ..."></textarea>
                 <br>
                 <!-- combine shares and regenerate the secret -->
+<<<<<<< Updated upstream
 				<br>
                 <button onclick="combineShares();">Combine</button>
 				<br>
 				<br>
 				<br>
+=======
+                <button onclick="combineShares();">Combine</button>
+>>>>>>> Stashed changes
                 <!-- <h3>You can view your secret below, or download if it is a file:</h3> -->
 				<h3>You can view your secret below:</h3>
                 <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
@@ -83,7 +94,11 @@
 				<h2>Combine / Decryption:</h2>
 				<h3>Upload the share files one by one to reconstruct the secret:</h3>
 				<!-- <input type="file" id="sharesLoader" name="sharesLoader" src="" width="" height=""/> -->
+<<<<<<< Updated upstream
 				<input type="file" id="sharesLoader" name="sharesLoader" src="" width="" height="">
+=======
+				<input type="file" id="sharesLoader" name="sharesLoader">
+>>>>>>> Stashed changes
 				<br>
 				<br>
 				<button onclick="image_combineShares();">Combine</button>
@@ -130,7 +145,10 @@
 	<script src="js/image/image_combineShares.js"></script>
 	<script src="js/image/updateInput_2.js"></script>
 	<script src="js/image/download_secret_image.js"></script>
+<<<<<<< Updated upstream
 	<script src="js/image/image_getShares.js"></script>
+=======
+>>>>>>> Stashed changes
 </body>
 
 </html>
