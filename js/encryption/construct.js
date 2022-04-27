@@ -1,12 +1,13 @@
 function construct(bits, arr, base, size) {
-    var len = arr.length - 1;
-    var str = ""; 
+    var str = "";
 
-    for (var i = 0; i < len || (str.length < bits); i++) {
+    for (var i = 0; i < arr.length - 1 || (str.length < bits); i++) {
         var parsedInt = Math.abs(parseInt(arr[i], base)); //must positive
         str += padLeft(parsedInt.toString(2), size);
     }
+
     str = str.substr(-bits);
+
     //reconstruct if all are 0
     if ((str.match(/0/g) || []).length === str.length) {
         return null;
@@ -23,6 +24,6 @@ function constructShare(bits, id, data) {
     var idPaddingLen = idMax.toString(defaultBase).length;
     var idHex = padLeft(id.toString(defaultBase), idPaddingLen);
     var newShareString = bitsBase36 + idHex + data;
-    
+
     return newShareString;
 }
