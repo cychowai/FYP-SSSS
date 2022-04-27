@@ -4,13 +4,14 @@ function displayImage() {
   const textSharesInput = document.getElementById("sharesCombine");
   const textSecretOutput = document.getElementById("showSecret");
 
-  const imageSecret = document.getElementById("textLoader");
+  const imageSecret = document.getElementById("imageLoader");
   const imageShares = document.getElementById("myCanvas1");
   const imageSharesInput = document.getElementById("sharesLoader");
   const imageSecretOutput = document.getElementById("myCanvas2");
 
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
+  const textFileUpload = document.getElementById("textFileUpload");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
@@ -32,6 +33,7 @@ function displayImage() {
   imageBtn.style.color = "#ffffff";
   textBtn.style.backgroundColor = "#efefef";
   textBtn.style.color = "#000000";
+  textFileUpload.style.display = "none";
 
   textBtn1.style.display = "none";
   imageBtn1.style.display = "block";
@@ -46,13 +48,14 @@ function displayText() {
   const textSharesInput = document.getElementById("sharesCombine");
   const textSecretOutput = document.getElementById("showSecret");
 
-  const imageSecret = document.getElementById("textLoader");
+  const imageSecret = document.getElementById("imageLoader");
   const imageShares = document.getElementById("myCanvas1");
   const imageSharesInput = document.getElementById("sharesLoader");
   const imageSecretOutput = document.getElementById("myCanvas2");
 
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
+  const textFileUpload = document.getElementById("textFileUpload");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
@@ -74,6 +77,7 @@ function displayText() {
   textBtn.style.color = "#ffffff";
   imageBtn.style.backgroundColor = "#efefef";
   imageBtn.style.color = "#000000";
+  textFileUpload.style.display = "flex";
 
   textBtn1.style.display = "block";
   imageBtn1.style.display = "none";

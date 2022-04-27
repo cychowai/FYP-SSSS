@@ -57,4 +57,13 @@ button.selectImageBtn {
     padding: 10px;
 }
 
+div.textFileUpload {
+    display: flex;
+    margin-top: 5px;
+}
+
+button.combineBtn {
+    margin-top: 31px;
+}
+
 

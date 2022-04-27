@@ -30,20 +30,20 @@
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."
                     onblur="document.getElementById('textLoader').value = '';"></textarea>
-                <!-- <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height=""
-                    style="display: none;"></input> -->
-                <input type="file" id="textLoader" name="textLoader" accept=".txt"
-                    onchange="updateTextInput(this.files[0])" src="" width="" height="" style="display: none;">
-                <br><br>
+                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height=""
+                    style="display: none;"></input>
+                <div class="textFileUpload" id="textFileUpload">
+                    <div>Or upload a text file here</div>&nbsp;&nbsp;
+                    <input type="file" id="textLoader" name="textLoader" accept=".txt"
+                        onchange="updateTextInput(this.files[0])" src="" width="" height=""></input>
+                </div>
+                <br>
 
                 <!-- split secret and display shares -->
                 <button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
-
-                <button id="imageBtn1" onclick="splitSecret(); checkUpdate();" style="display: none;">Split and
+                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();" style="display: none;">Split and
                     Download</button>
-                <!-- <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();"
-                    style="display: none; margin-bottom: 28px;">Split and Download</button>
-                <br><br> -->
+                <br>
 
                 <h3>Share(s):</h3>
                 <canvas id="myCanvas1" width="400" height="300" style="display: none;">
@@ -59,16 +59,17 @@
                     placeholder="Please put the shares one by one per line ..."></textarea>
                 <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader" src="" width="" height=""
                     style="display: none;"></input>
-                <br><br>
+                <br>
 
                 <!-- combine shares and regenerate the secret -->
-                <button id="textBtn2" onclick="combineShares();">Combine</button>
+                <button id="textBtn2" onclick="combineShares();" class="combineBtn">Combine</button>
                 <div style="display: flex;">
                     <button id="imageBtn2a" onclick="imageCombineShares();"
                         style="display: none; margin-right: 5px;">Combine</button>
                     <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download
                         Image</button>
                 </div>
+                <br>
 
                 <h3>You can view your secret below:</h3>
                 <canvas id="myCanvas2" width="400" height="300" style="display: none;">
