@@ -53,8 +53,9 @@ function binToHex(str) {
 }
 
 function intToHex(num) {
+    var out = "";
     var hexChars = 2 * bytesPerChar;
-    var out = padLeft(num.toString(16), hexChars) + out;
+    out = padLeft(num.toString(16), hexChars) + out;
     return out;
 }
 
