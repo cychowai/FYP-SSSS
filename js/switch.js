@@ -16,8 +16,7 @@ function displayImage() {
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
-  const imageBtn2a = document.getElementById("imageBtn2a");
-  const imageBtn2b = document.getElementById("imageBtn2b");
+  const imageBtn2 = document.getElementById("imageBtn2");
 
   textSecret.style.display = "none";
   textShares.style.display = "none";
@@ -38,8 +37,7 @@ function displayImage() {
   textBtn1.style.display = "none";
   imageBtn1.style.display = "block";
   textBtn2.style.display = "none";
-  imageBtn2a.style.display = "block";
-  imageBtn2b.style.display = "block";
+  imageBtn2.style.display = "flex";
 }
 
 function displayText() {
@@ -60,8 +58,7 @@ function displayText() {
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
-  const imageBtn2a = document.getElementById("imageBtn2a");
-  const imageBtn2b = document.getElementById("imageBtn2b");
+  const imageBtn2 = document.getElementById("imageBtn2");
 
   textSecret.style.display = "block";
   textShares.style.display = "block";
@@ -82,6 +79,5 @@ function displayText() {
   textBtn1.style.display = "block";
   imageBtn1.style.display = "none";
   textBtn2.style.display = "block";
-  imageBtn2a.style.display = "none";
-  imageBtn2b.style.display = "none";
+  imageBtn2.style.display = "none";
 }
