@@ -1,5 +1,5 @@
 var sharesLoader = document.getElementById('sharesLoader');
-sharesLoader.addEventListener('change', upload_files, false);
+sharesLoader.addEventListener('change', uploadFiles, false);
 
 function uploadFiles(e) {
 	var reader = new FileReader();
