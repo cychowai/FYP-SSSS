@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <h1>Shamir Secret Sharing Scheme</h1>
-        <div class="centerContainer">
+        <div class="centerContainer" id="center_Container">
             <div class="leftDiv">
                 <h2>Split / Encryption:</h2>
                 <h3>Require
@@ -26,47 +26,79 @@
                         size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
-
-                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
+                <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft" onblur = "document.getElementById('textLoader').value = '';"
                     placeholder="Please type the secret here ..."></textarea>
-                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height="" style="display: none;"></input>
-				<br><br>
-
+                <br>
+				<br>
                 <!-- split secret and display shares -->
-				<button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
-                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();" style="display: none; margin-bottom: 28px;">Split and Download</button>
-				<br><br>
-
+				<input type="file" id="textLoader" name="textLoader" accept=".txt" onchange="updateTextInput(this.files[0])" src="" width="" height="">
+				<br>
+				<br>
+                <button onclick="splitSecret(); checkUpdate();">Split</button>
                 <h3>Share(s):</h3>
-				<canvas id="myCanvas1" width="400" height="300" style="display: none;">
-				    Your browser does not support the HTML5 canvas tag.
-				</canvas>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
-                
                 <textarea form="sharesRecombine" id="sharesCombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
-                <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader" src="" width="" height="" style="display: none;"></input>
-				<br><br>
-
+                <br>
                 <!-- combine shares and regenerate the secret -->
-				<button id="textBtn2" onclick="combineShares();">Combine</button>
-                <button id="imageBtn2a" onclick="imageCombineShares();" style="display: none; margin-bottom: 5px;">Combine</button>
-                <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download Image</button>
-				<br><br>
-
-                <h3>You can view your secret below:</h3>
-				<canvas id="myCanvas2" width="400" height="300" style="display: none;">
-				    Your browser does not support the HTML5 canvas tag.
-				</canvas>
+				<br>
+                <button onclick="combineShares();">Combine</button>
+				<br>
+				<br>
+				<br>
+                <!-- <h3>You can view your secret below, or download if it is a file:</h3> -->
+				<h3>You can view your secret below:</h3>
                 <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
             </div>
         </div>
-        <br><br>
-        <div class="selectDiv">
+		<div></div>
+		<br>
+        <div class="imageContainer" style="display: none;" id="image_Container">
+			<div class="imageLeftDiv">
+				<h2>Image Split / Encryption:</h2>
+				<h3>Require
+                    <input type="number" id="threshold_2" name="threshold_2" 
+                        size="3px" value="3" min="2" max="255" onchange="updateThreshold_2();"></input>
+                    parts from
+                    <input type="number" id="noOfShares_2" name="noOfShares_2" 
+                        size="3px" value="5" min="2" max="255" onchange="updateShares_2();"></input>
+                    to reconstruct the following secret:
+                </h3>
+				<input type="file" id="imageLoader" name="imageLoader" src="" width="" height="">
+				<br>
+				<br>
+				<button onclick="image_splitSecret(); checkUpdate_2();">Split and Download</button>
+				<br>
+				<br>
+				<canvas id="myCanvas1" width="400" height="300"
+				style="border:1px solid #d3d3d3;">
+				Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+			<div class="imageRighttDiv">
+				<h2>Combine / Decryption:</h2>
+				<h3>Upload the share files one by one to reconstruct the secret:</h3>
+				<!-- <input type="file" id="sharesLoader" name="sharesLoader" src="" width="" height=""/> -->
+				<input type="file" id="sharesLoader" name="sharesLoader">
+				<br>
+				<br>
+				<button onclick="image_combineShares();">Combine</button>
+				<button onclick="download_secret_image();">Download Image</button>
+				<br>
+				<br>
+				<canvas id="myCanvas2" width="400" height="300"
+				style="border:1px solid #d3d3d3;">
+				Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="selectDiv">
             <button id="textBtn" class="selectTextBtn" onclick="displayText();">Text</button>
             &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
             <button id="imageBtn" class="selectImageBtn" onclick="displayImage();">Image</button>
@@ -75,13 +107,13 @@
 			<textarea id="temp_1" hidden></textarea>
 			<textarea id="temp_2" hidden></textarea>
 		</div>
-		<br>
+		<div></div>
     </div>
     <!-- import javaScript here -->
     <script src="js/constant.js"></script>
     <script src="js/transform.js"></script>
     <script src="js/updateInput.js"></script>
-    <script src="js/switch.js"></script>
+	<script src="js/switch.js"></script>
     <!-- encryption process -->
     <script src="js/encryption/construct.js"></script>
     <script src="js/encryption/generateShares.js"></script>
@@ -90,18 +122,20 @@
     <script src="js/decryption/combineShares.js"></script>
     <script src="js/decryption/extractShare.js"></script>
     <script src="js/decryption/regenerateSecret.js"></script>
-    <!-- helper functions -->
+    <!-- helper functions-->
     <script src="js/helper/getRandomValues.js"></script>
     <script src="js/helper/horner.js"></script>
     <script src="js/helper/lagrangeInterpolation.js"></script>
     <script src="js/helper/padLeft.js"></script>
     <script src="js/helper/splitStringToArray.js"></script>
-    <!-- image functions -->
-    <script src="js/image/image.js"></script>
+	<!-- image -->
+	<script src="js/image/image.js"></script>
 	<script src="js/image/uploadFiles.js"></script>
-	<script src="js/image/imageSplitSecret.js"></script>
-	<script src="js/image/generateImageShares.js"></script>
-	<script src="js/image/imageCombineShares.js"></script>
+	<script src="js/image/image_splitSecret.js"></script>
+	<script src="js/image/image_generateShares.js"></script>
+	<script src="js/image/image_combineShares.js"></script>
+	<script src="js/image/updateInput_2.js"></script>
+	<script src="js/image/download_secret_image.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-//default values
 const MAX_VALUE = 255; 
 const MIN_VALUE = 2;
 const defaultThreshold = 3;
@@ -25,7 +24,7 @@ var logs = [], exps = [], i, x = 1;
 for (i = 0; i < defaultSize; i++) {
     exps[i] = x;
     logs[x] = i;
-    //left shift by a bit
+    //left shift
     x = x << 1;
     if (x >= defaultSize) {
         //XOR: bit addition and subtraction
