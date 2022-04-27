@@ -44,6 +44,8 @@ function displayImage() {
   imageBtn1.style.display = "block";
   textBtn2.style.display = "none";
   imageBtn2.style.display = "flex";
+
+  document.getElementById("secret").value = null;
 }
 
 function displayText() {
@@ -92,4 +94,6 @@ function displayText() {
   imageBtn1.style.display = "none";
   textBtn2.style.display = "block";
   imageBtn2.style.display = "none";
+
+  document.getElementById("secret").value = null;
 }
