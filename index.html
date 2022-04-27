@@ -30,13 +30,13 @@
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
                     placeholder="Please type the secret here ..."
                     onblur="document.getElementById('textLoader').value = '';"></textarea>
-                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width=""
-                    height=""></input>
                 <div class="textFileUpload" id="textFileUpload">
                     <div>Or upload a text file here</div>&nbsp;&nbsp;
                     <input type="file" id="textLoader" name="textLoader" accept=".txt"
                         onchange="updateTextInput(this.files[0])" src="" width="" height=""></input>
                 </div>
+                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width=""
+                    height=""></input>
                 <br>
 
                 <!-- split secret and display shares -->
