@@ -32,7 +32,6 @@ image_splitSecret = function () {
     }
 
     var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
     console.log(imgData);
 
     //split the secret into shares with no = noOfShares
@@ -42,7 +41,4 @@ image_splitSecret = function () {
         var name = "Share" + parseInt(i + 1) + "_" + shares.length + "-" + imgData.width + "&" + imgData.height;
         download(name, shares[i]);
     }
-
-
-
 }
