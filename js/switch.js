@@ -46,6 +46,9 @@ function displayImage() {
   imageBtn2.style.display = "flex";
 
   document.getElementById("secret").value = null;
+  document.getElementById("shares").value = null;
+  document.getElementById("sharesCombine").value = null;
+  document.getElementById("showSecret").value = null;
 }
 
 function displayText() {
