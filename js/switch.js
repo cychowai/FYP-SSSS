@@ -13,6 +13,9 @@ function displayImage() {
   const textBtn = document.getElementById("textBtn");
   const textFileUpload = document.getElementById("textFileUpload");
 
+  const imageHeader = document.getElementById("imageHeader");
+  const textHeader = document.getElementById("textHeader");
+
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
@@ -33,6 +36,9 @@ function displayImage() {
   textBtn.style.backgroundColor = "#efefef";
   textBtn.style.color = "#000000";
   textFileUpload.style.display = "none";
+
+  imageHeader.style.display = "block";
+  textHeader.style.display = "none";
 
   textBtn1.style.display = "none";
   imageBtn1.style.display = "block";
@@ -55,6 +61,9 @@ function displayText() {
   const textBtn = document.getElementById("textBtn");
   const textFileUpload = document.getElementById("textFileUpload");
 
+  const imageHeader = document.getElementById("imageHeader");
+  const textHeader = document.getElementById("textHeader");
+
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
@@ -75,6 +84,9 @@ function displayText() {
   imageBtn.style.backgroundColor = "#efefef";
   imageBtn.style.color = "#000000";
   textFileUpload.style.display = "flex";
+
+  imageHeader.style.display = "none";
+  textHeader.style.display = "block";
 
   textBtn1.style.display = "block";
   imageBtn1.style.display = "none";
