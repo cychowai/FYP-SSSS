@@ -39,6 +39,7 @@ button {
 
 input.uploadFiles {
     cursor: pointer;
+    display: none;
 }
 
 button.selectTextBtn {
