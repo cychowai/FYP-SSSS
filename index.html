@@ -28,21 +28,26 @@
                 </h3>
 
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
-                    placeholder="Please type the secret here ..."></textarea>
-                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height=""
-                    style="display: none;"></input>
+                    placeholder="Please type the secret here ..."
+                    onblur="document.getElementById('textLoader').value = '';"></textarea>
+                <!-- <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height=""
+                    style="display: none;"></input> -->
+                <input type="file" id="textLoader" name="textLoader" accept=".txt"
+                    onchange="updateTextInput(this.files[0])" src="" width="" height="" style="display: none;">
                 <br><br>
 
                 <!-- split secret and display shares -->
                 <button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
-                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();"
+
+                <button id="imageBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
+                <!-- <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();"
                     style="display: none; margin-bottom: 28px;">Split and Download</button>
-                <br><br>
+                <br><br> -->
 
                 <h3>Share(s):</h3>
-                <canvas id="myCanvas1" width="400" height="300" style="display: none;">
+                <!-- <canvas id="myCanvas1" width="400" height="300" style="display: none;">
                     Your browser does not support the HTML5 canvas tag.
-                </canvas>
+                </canvas> -->
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
@@ -70,16 +75,15 @@
             </div>
         </div>
         <br><br>
+        <div>
+            <textarea id="temp_1" hidden></textarea>
+            <textarea id="temp_2" hidden></textarea>
+        </div>
         <div class="selectDiv">
             <button id="textBtn" class="selectTextBtn" onclick="displayText();">Text</button>
             &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
             <button id="imageBtn" class="selectImageBtn" onclick="displayImage();">Image</button>
         </div>
-        <div>
-            <textarea id="temp_1" hidden></textarea>
-            <textarea id="temp_2" hidden></textarea>
-        </div>
-        <br>
     </div>
     <!-- import javaScript here -->
     <script src="js/constant.js"></script>
