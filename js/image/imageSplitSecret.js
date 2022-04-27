@@ -21,8 +21,7 @@ imageSplitSecret = function () {
 	var ctx = canvas.getContext('2d');
 	//var imageLoader = document.getElementById('imageLoader');
 
-	console.log("defaultExps: ", defaultExps);
-	console.log("defaultLogs: ", defaultLogs);
+	console.log("reached");
 
 	if (threshold > noOfShares) {
 		return;
@@ -33,10 +32,6 @@ imageSplitSecret = function () {
 
 	//split the secret into shares with no = noOfShares
 	var shares = generateImageShares(imgData, noOfShares, threshold, minPadLength);
-
-	for (var i = 0; i < shares.length; i++) {
-		console.log(shares[i]);
-	}
 
 	for (var i = 0; i < shares.length; i++) {
 		var name = "Share" + parseInt(i + 1) + "_" + shares.length + "-" + imgData.width + "&" + imgData.height;
