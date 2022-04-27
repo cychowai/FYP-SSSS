@@ -1,5 +1,5 @@
 imageCombineShares = function () {
-	var threshold = parseInt(document.getElementById("threshold_2").value);
+	var threshold = parseInt(document.getElementById("threshold").value);
 	console.log("threshold : ", threshold);
 	var img_size = document.getElementById("temp_1").value;
 	var sharesString = document.getElementById("temp_2").value;
