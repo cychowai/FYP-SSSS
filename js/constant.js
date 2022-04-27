@@ -1,4 +1,5 @@
-const MAX_VALUE = 255; 
+//default values
+const MAX_VALUE = 255;
 const MIN_VALUE = 2;
 const defaultThreshold = 3;
 const defaultShares = 5;
@@ -8,7 +9,7 @@ const defaultBase = 16;
 const bytesPerChar = 2;
 const maxBytesPerChar = 6;
 const minPadLength = 128;
-const maxPadLength = 1024; 
+const maxPadLength = 1024;
 
 //array used for padding 0 in transforming bases
 const preGenPadding = new Array(1024).join("0");
@@ -24,7 +25,7 @@ var logs = [], exps = [], i, x = 1;
 for (i = 0; i < defaultSize; i++) {
     exps[i] = x;
     logs[x] = i;
-    //left shift
+    //left shift by a bit
     x = x << 1;
     if (x >= defaultSize) {
         //XOR: bit addition and subtraction
