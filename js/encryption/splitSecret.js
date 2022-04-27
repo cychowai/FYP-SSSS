@@ -1,44 +1,39 @@
 splitSecret = function () {
-    //pass the shares here
+    //pass the parameters here
     var noOfShares = parseInt(document.getElementById("noOfShares").value);
-    console.log("noOfShares : ", noOfShares);
     var secret = document.getElementById("secret").value;
-    console.log("secret : ", secret);
     var threshold = parseInt(document.getElementById("threshold").value);
-    console.log("threshold : ", threshold);
 
-    console.log("defaultExps: ", defaultExps);
-    console.log("defaultLogs: ", defaultLogs);
+    //logging
+    console.log("noOfShares : ", noOfShares);
+    console.log("secret : ", secret);
+    console.log("threshold : ", threshold);
 
     //checking whether the secret exists
     if (!secret) {
         alert("Please enter the secret!");
         return;
     }
-	
-	//return if threshold > noOfShares
-	if (threshold > noOfShares) {
-		return;
-	}
-	    
+
     //split the secret into shares with no = noOfShares
-    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //more secure
-    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares
-    
+    //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //most secure
+    var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares but still secure
+
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
         var share = shares[i] + "\r\n\r\n"; //new line for shares
-        sharesString.push(share);
+        sharesString.push(share); //push the shares into an array to display
     }
 
     document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
 }
-function updateTextInput(file){
+
+function updateTextInput(file) {
     var secretBox = document.getElementById('secret');
     secretBox.value = '';
-    
+
     var fileReader = new FileReader();
-    fileReader.onload = function(){
+    fileReader.onload = function () {
         secretBox.value = fileReader.result;
     }
     fileReader.readAsText(file);
