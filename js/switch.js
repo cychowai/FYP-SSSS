@@ -11,12 +11,15 @@ function displayImage() {
 
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
+  const textFileUpload = document.getElementById("textFileUpload");
+
+  const imageHeader = document.getElementById("imageHeader");
+  const textHeader = document.getElementById("textHeader");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
-  const imageBtn2a = document.getElementById("imageBtn2a");
-  const imageBtn2b = document.getElementById("imageBtn2b");
+  const imageBtn2 = document.getElementById("imageBtn2");
 
   textSecret.style.display = "none";
   textShares.style.display = "none";
@@ -32,12 +35,20 @@ function displayImage() {
   imageBtn.style.color = "#ffffff";
   textBtn.style.backgroundColor = "#efefef";
   textBtn.style.color = "#000000";
+  textFileUpload.style.display = "none";
+
+  imageHeader.style.display = "block";
+  textHeader.style.display = "none";
 
   textBtn1.style.display = "none";
   imageBtn1.style.display = "block";
   textBtn2.style.display = "none";
-  imageBtn2a.style.display = "block";
-  imageBtn2b.style.display = "block";
+  imageBtn2.style.display = "flex";
+
+  document.getElementById("secret").value = null;
+  document.getElementById("shares").value = null;
+  document.getElementById("sharesCombine").value = null;
+  document.getElementById("showSecret").value = null;
 }
 
 function displayText() {
@@ -53,12 +64,15 @@ function displayText() {
 
   const imageBtn = document.getElementById("imageBtn");
   const textBtn = document.getElementById("textBtn");
+  const textFileUpload = document.getElementById("textFileUpload");
+
+  const imageHeader = document.getElementById("imageHeader");
+  const textHeader = document.getElementById("textHeader");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
   const textBtn2 = document.getElementById("textBtn2");
-  const imageBtn2a = document.getElementById("imageBtn2a");
-  const imageBtn2b = document.getElementById("imageBtn2b");
+  const imageBtn2 = document.getElementById("imageBtn2");
 
   textSecret.style.display = "block";
   textShares.style.display = "block";
@@ -74,10 +88,15 @@ function displayText() {
   textBtn.style.color = "#ffffff";
   imageBtn.style.backgroundColor = "#efefef";
   imageBtn.style.color = "#000000";
+  textFileUpload.style.display = "flex";
+
+  imageHeader.style.display = "none";
+  textHeader.style.display = "block";
 
   textBtn1.style.display = "block";
   imageBtn1.style.display = "none";
   textBtn2.style.display = "block";
-  imageBtn2a.style.display = "none";
-  imageBtn2b.style.display = "none";
+  imageBtn2.style.display = "none";
+
+  document.getElementById("secret").value = null;
 }

@@ -21,7 +21,6 @@ imageCombineShares = function () {
 	console.log("shares : ", shares);
 
 	var secret = regenerateSecret(shares);
-
 	console.log("secret : ", secret);
 	//document.getElementById("showSecret").value = secret;
 
@@ -46,5 +45,4 @@ imageCombineShares = function () {
 
 	document.getElementById("temp_1").value = "";
 	document.getElementById("temp_2").value = "";
-
 }

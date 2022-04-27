@@ -19,63 +19,73 @@
             <div class="leftDiv">
                 <h2>Split / Encryption:</h2>
                 <h3>Require
-                    <input type="number" id="threshold" name="threshold" 
-                        size="3px" value="3" min="2" max="255" onchange="updateThreshold();"></input>
+                    <input type="number" id="threshold" name="threshold" size="3px" value="3" min="2" max="255"
+                        onchange="updateThreshold();"></input>
                     parts from
-                    <input type="number" id="noOfShares" name="noOfShares" 
-                        size="3px" value="5" min="2" max="255" onchange="updateShares();"></input>
+                    <input type="number" id="noOfShares" name="noOfShares" size="3px" value="5" min="2" max="255"
+                        onchange="updateShares();"></input>
                     to reconstruct the following secret:
                 </h3>
 
                 <textarea form="secret" id="secret" name="secretInput" cols="60" rows="10" wrap="soft"
-                    placeholder="Please type the secret here ..."></textarea>
-                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width="" height="" style="display: none;"></input>
-				<br><br>
+                    placeholder="Please type the secret here ..."
+                    onblur="document.getElementById('textLoader').value = '';"></textarea>
+                <div class="textFileUpload" id="textFileUpload">
+                    <div>Or upload a text file here</div>&nbsp;&nbsp;
+                    <input type="file" id="textLoader" name="textLoader" accept=".txt"
+                        onchange="updateTextInput(this.files[0])" src="" width="" height=""></input>
+                </div>
+                <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width=""
+                    height=""></input>
+                <br>
 
                 <!-- split secret and display shares -->
-				<button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
-                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();" style="display: none; margin-bottom: 28px;">Split and Download</button>
-				<br><br>
+                <button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
+                <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();" style="display: none;">Split and
+                    Download</button>
+                <br>
 
-                <h3>Share(s):</h3>
-				<canvas id="myCanvas1" width="400" height="300" style="display: none;">
-				    Your browser does not support the HTML5 canvas tag.
-				</canvas>
+                <h3 id="textHeader">Share(s):</h3>
+                <h3 id="imageHeader" style="display: none;">You can preview your secret below:</h3>
+                <canvas id="myCanvas1" width="400" height="300">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
                 <h2>Combine / Decryption:</h2>
                 <h3>Put the shares here to combile for reconstruct the secret:</h3>
-                
+
                 <textarea form="sharesRecombine" id="sharesCombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
-                <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader" src="" width="" height="" style="display: none;"></input>
-				<br><br>
+                <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader"></input>
+                <br>
 
                 <!-- combine shares and regenerate the secret -->
-				<button id="textBtn2" onclick="combineShares();">Combine</button>
-                <button id="imageBtn2a" onclick="imageCombineShares();" style="display: none; margin-bottom: 5px;">Combine</button>
-                <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download Image</button>
-				<br><br>
+                <button id="textBtn2" onclick="combineShares();" class="combineBtn">Combine</button>
+                <div id="imageBtn2" style="display: none;">
+                    <button onclick="imageCombineShares();">Combine</button>&nbsp;&nbsp;
+                    <button onclick="downloadSecretImage();">Download Image</button>
+                </div>
+                <br>
 
                 <h3>You can view your secret below:</h3>
-				<canvas id="myCanvas2" width="400" height="300" style="display: none;">
-				    Your browser does not support the HTML5 canvas tag.
-				</canvas>
+                <canvas id="myCanvas2" width="400" height="300">
+                    Your browser does not support the HTML5 canvas tag.
+                </canvas>
                 <textarea id="showSecret" name="sharesCombine" cols="60" rows="10" wrap="soft"></textarea>
             </div>
         </div>
         <br><br>
+        <div>
+            <textarea id="temp_1" hidden></textarea>
+            <textarea id="temp_2" hidden></textarea>
+        </div>
         <div class="selectDiv">
             <button id="textBtn" class="selectTextBtn" onclick="displayText();">Text</button>
             &nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;
             <button id="imageBtn" class="selectImageBtn" onclick="displayImage();">Image</button>
         </div>
-		<div>
-			<textarea id="temp_1" hidden></textarea>
-			<textarea id="temp_2" hidden></textarea>
-		</div>
-		<br>
     </div>
     <!-- import javaScript here -->
     <script src="js/constant.js"></script>
@@ -98,10 +108,11 @@
     <script src="js/helper/splitStringToArray.js"></script>
     <!-- image functions -->
     <script src="js/image/image.js"></script>
-	<script src="js/image/uploadFiles.js"></script>
-	<script src="js/image/imageSplitSecret.js"></script>
-	<script src="js/image/generateImageShares.js"></script>
-	<script src="js/image/imageCombineShares.js"></script>
+    <script src="js/image/uploadFiles.js"></script>
+    <script src="js/image/imageSplitSecret.js"></script>
+    <script src="js/image/generateImageShares.js"></script>
+    <script src="js/image/imageCombineShares.js"></script>
+    <script src="js/image/downloadSecretImage.js"></script>
 </body>
 
 </html>

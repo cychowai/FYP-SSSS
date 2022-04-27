@@ -14,11 +14,11 @@ splitSecret = function () {
         alert("Please enter the secret!");
         return;
     }
-    
+
     //split the secret into shares with no = noOfShares
     //var shares = generateShares(strToHex(secret), noOfShares, threshold, maxPadLength); //most secure
     var shares = generateShares(strToHex(secret), noOfShares, threshold, minPadLength); //shorter shares but still secure
-    
+
     var sharesString = [];
     for (var i = 0; i < shares.length; i++) {
         var share = shares[i] + "\r\n\r\n"; //new line for shares
@@ -26,4 +26,15 @@ splitSecret = function () {
     }
 
     document.getElementById("shares").value = sharesString.join(""); //remove ',' in the end of each shares
+}
+
+function updateTextInput(file) {
+    var secretBox = document.getElementById('secret');
+    secretBox.value = '';
+
+    var fileReader = new FileReader();
+    fileReader.onload = function () {
+        secretBox.value = fileReader.result;
+    }
+    fileReader.readAsText(file);
 }
