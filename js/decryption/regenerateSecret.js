@@ -21,5 +21,4 @@ function regenerateSecret(shares) {
     }
 
     return binToHex(result.slice(result.indexOf("1") + 1)); //remove the maker "1"
-    //return binToHex(result);
 }
