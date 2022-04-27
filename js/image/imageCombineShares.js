@@ -45,5 +45,4 @@ imageCombineShares = function () {
 
 	document.getElementById("temp_1").value = "";
 	document.getElementById("temp_2").value = "";
-
 }
