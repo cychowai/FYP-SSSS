@@ -68,4 +68,9 @@ button.combineBtn {
     margin-top: 3.45vh;
 }
 
+div.imageSpace {
+    height: 4vh;
+    display: none;
+}
+
 

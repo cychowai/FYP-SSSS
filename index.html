@@ -37,6 +37,7 @@
                 </div>
                 <input class="uploadFiles" type="file" id="imageLoader" name="imageLoader" src="" width=""
                     height=""></input>
+                <div class="imageSpace" id="imageSpace"></div>
                 <br>
 
                 <!-- split secret and display shares -->
@@ -59,6 +60,10 @@
                 <textarea form="sharesRecombine" id="sharesCombine" name="sharesCombine" cols="60" rows="10" wrap="soft"
                     placeholder="Please put the shares one by one per line ..."></textarea>
                 <input class="uploadFiles" type="file" id="sharesLoader" name="sharesLoader"></input>
+                <div id="imageSharesViewer" style="display: none;">
+                    <p style="font-size: 9px;">Share files uploaded : </p>&nbsp;
+                    <p id="imageShares" style="font-size: 9px;"></p>
+                </div>
                 <br>
                 <div id="space"><br></div>
 

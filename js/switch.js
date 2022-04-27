@@ -16,6 +16,8 @@ function displayImage() {
   const imageHeader = document.getElementById("imageHeader");
   const textHeader = document.getElementById("textHeader");
   const space = document.getElementById("space");
+  const imageSpace = document.getElementById("imageSpace");
+  const imageSharesViewer = document.getElementById("imageSharesViewer");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
@@ -41,6 +43,8 @@ function displayImage() {
   imageHeader.style.display = "block";
   textHeader.style.display = "none";
   space.style.display = "none";
+  imageSpace.style.display = "block";
+  imageSharesViewer.style.display = "flex";
 
   textBtn1.style.display = "none";
   imageBtn1.style.display = "block";
@@ -71,6 +75,8 @@ function displayText() {
   const imageHeader = document.getElementById("imageHeader");
   const textHeader = document.getElementById("textHeader");
   const space = document.getElementById("space");
+  const imageSpace = document.getElementById("imageSpace");
+  const imageSharesViewer = document.getElementById("imageSharesViewer");
 
   const textBtn1 = document.getElementById("textBtn1");
   const imageBtn1 = document.getElementById("imageBtn1");
@@ -96,6 +102,8 @@ function displayText() {
   imageHeader.style.display = "none";
   textHeader.style.display = "block";
   space.style.display = "none";
+  imageSpace.style.display = "none";
+  imageSharesViewer.style.display = "none";
 
   textBtn1.style.display = "block";
   imageBtn1.style.display = "none";

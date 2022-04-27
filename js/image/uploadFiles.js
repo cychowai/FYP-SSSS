@@ -12,5 +12,16 @@ function uploadFiles(e) {
 	if (e.target.files[0]) {
 		reader.readAsText(e.target.files[0]);
 		document.getElementById("temp_1").value = e.target.files[0].name;
+
+		var imageShares = document.getElementById("imageShares").innerHTML || "";
+		console.log(imageShares);
+		if (imageShares === "") {
+			imageShares += e.target.files[0].name;
+		}
+		else {
+			imageShares += ", " + e.target.files[0].name;
+		}
+		console.log(imageShares);
+		document.getElementById("imageShares").innerHTML = imageShares;
 	}
 }
