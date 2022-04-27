@@ -29,11 +29,11 @@ function hexToBin(str) {
     //start with the last bit which is the last digit of the value in heximal
     for (var i = str.length - 1; i >= 0; i--) {
         //parse to integer of base 16 
-        var num = parseInt(str[i], 16); 
+        var num = parseInt(str[i], 16);
         //change to base 2 by toString(2)
         //add padding on left to make it become 4 bits long
         //sum up the binary string
-        bin = padLeft(num.toString(2), 4) + bin; 
+        bin = padLeft(num.toString(2), 4) + bin;
     }
     return bin;
 }
@@ -44,10 +44,23 @@ function binToHex(str) {
     //add padding on left to make it become at least 4 bits long
     str = padLeft(str, 4);
     //start with the last 4 bits and 4 bits as a group each time
-    for (var i = str.length; i >= 4; i -= 4) { 
+    for (var i = str.length; i >= 4; i -= 4) {
         //parse 4 bits to integer of base 2
-        var num = parseInt(str.slice(i - 4, i), 2); 
+        var num = parseInt(str.slice(i - 4, i), 2);
         hex = num.toString(16) + hex;
     }
     return hex;
+}
+
+function intToHex(num) {
+    var hexChars = 2 * bytesPerChar;
+    var out = padLeft(num.toString(16), hexChars) + out;
+    return out;
+}
+
+function hexToInt(str, n) {
+    var hexChars = 2 * bytesPerChar;
+    str = padLeft(str, hexChars);
+    var out = parseInt(str.slice(n - hexChars, n), 16);
+    return out;
 }
