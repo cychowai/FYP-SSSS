@@ -39,15 +39,16 @@
                 <!-- split secret and display shares -->
                 <button id="textBtn1" onclick="splitSecret(); checkUpdate();">Split</button>
 
-                <button id="imageBtn1" onclick="splitSecret(); checkUpdate();" style="display: none;">Split</button>
+                <button id="imageBtn1" onclick="splitSecret(); checkUpdate();" style="display: none;">Split and
+                    Download</button>
                 <!-- <button id="imageBtn1" onclick="imageSplitSecret(); checkUpdate();"
                     style="display: none; margin-bottom: 28px;">Split and Download</button>
                 <br><br> -->
 
                 <h3>Share(s):</h3>
-                <!-- <canvas id="myCanvas1" width="400" height="300" style="display: none;">
+                <canvas id="myCanvas1" width="400" height="300" style="display: none;">
                     Your browser does not support the HTML5 canvas tag.
-                </canvas> -->
+                </canvas>
                 <textarea id="shares" name="sharesDisplay" cols="60" rows="10" wrap="soft"></textarea>
             </div>
             <div class="rightDiv">
@@ -62,10 +63,12 @@
 
                 <!-- combine shares and regenerate the secret -->
                 <button id="textBtn2" onclick="combineShares();">Combine</button>
-                <button id="imageBtn2a" onclick="imageCombineShares();"
-                    style="display: none; margin-bottom: 5px;">Combine</button>
-                <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download Image</button>
-                <br><br>
+                <div style="display: flex;">
+                    <button id="imageBtn2a" onclick="imageCombineShares();"
+                        style="display: none; margin-right: 5px;">Combine</button>
+                    <button id="imageBtn2b" onclick="downloadSecretImage();" style="display: none;">Download
+                        Image</button>
+                </div>
 
                 <h3>You can view your secret below:</h3>
                 <canvas id="myCanvas2" width="400" height="300" style="display: none;">
