@@ -7,7 +7,6 @@ function download(filename, text) {
 	document.body.appendChild(element);
 
 	element.click();
-
 	document.body.removeChild(element);
 }
 
@@ -20,8 +19,7 @@ imageSplitSecret = function () {
 
 	var canvas = document.getElementById('myCanvas1');
 	var ctx = canvas.getContext('2d');
-
-	var imageLoader = document.getElementById('imageLoader');
+	//var imageLoader = document.getElementById('imageLoader');
 
 	console.log("defaultExps: ", defaultExps);
 	console.log("defaultLogs: ", defaultLogs);
@@ -31,7 +29,6 @@ imageSplitSecret = function () {
 	}
 
 	var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
 	console.log(imgData);
 
 	//split the secret into shares with no = noOfShares

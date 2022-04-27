@@ -21,7 +21,6 @@ imageCombineShares = function () {
 	console.log("shares : ", shares);
 
 	var secret = regenerateSecret(shares);
-
 	console.log("secret : ", secret);
 	//document.getElementById("showSecret").value = secret;
 
