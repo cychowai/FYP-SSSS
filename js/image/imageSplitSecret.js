@@ -13,9 +13,9 @@ function download(filename, text) {
 
 imageSplitSecret = function () {
 	//pass the shares here
-	var noOfShares = parseInt(document.getElementById("noOfShares_2").value);
+	var noOfShares = parseInt(document.getElementById("noOfShares").value);
 	console.log("noOfShares : ", noOfShares);
-	var threshold = parseInt(document.getElementById("threshold_2").value);
+	var threshold = parseInt(document.getElementById("threshold").value);
 	console.log("threshold : ", threshold);
 
 	var canvas = document.getElementById('myCanvas1');
