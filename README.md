@@ -1,6 +1,8 @@
 # FYP-SSSS
 > Final Year Project --- Shamir's secret sharing scheme (CD1)
 
+> Link: https://cychowai.github.io/FYP-SSSS/
+
 ## Project Description :
     
     Secret sharing refers to method for distributing a secret amongst a group of participants, each 
